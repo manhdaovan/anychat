@@ -17,7 +17,9 @@
 <body id="<%= params[:controller] %>">
 <div class="container">
   <%= render 'layouts/components/home/header' %>
+  <div class="content">
   <%= yield %>
+  </div>
   <%= render 'layouts/components/home/footer' %>
 </div>
 </body>

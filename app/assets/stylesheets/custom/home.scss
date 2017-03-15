@@ -20,6 +20,9 @@
   .bg-credit-link{
     margin-top: -30px;
     margin-right: 20px;
+    @include screen-xs{
+      margin-right: 0;
+    }
     a {
       width: 100%;
       height: 100%;

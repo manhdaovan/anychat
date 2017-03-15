@@ -1,0 +1,55 @@
+  <div class="container">
+    <div id="login-overlay" class="text-center">
+      <div class="l-modal-content">
+        <div class="l-modal-header">
+          <h4 class="l-modal-title text-info" id="myModalLabel">Login/Register to <b>anychat.4me.tips</b></h4>
+        </div>
+        <div class="l-modal-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="well">
+                <form id="loginForm" method="POST">
+                  <div class="form-group">
+                    <label for="username" class="control-label">Username with length >= 6
+                    </label>
+                    <div class="notice">Pick any [a-zA-Z0-9] nickname!</div>
+                    <input type="text" class="form-control" name="username"
+                           value="" required="" title="Please enter your username"
+                           placeholder="username">
+                    <span class="help-block"></span>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="control-label">Password with length >= 8
+                    </label>
+                    <div class="notice">Pls
+                      <span class="text-danger">REMEMBER</span>
+                      this. We have <span class="text-danger">NO RECOVERY</span>
+                      password mode!
+                    </div>
+                    <input type="password" class="form-control" name="password"
+                           placeholder="password" value="" required=""
+                           title="Please enter your password">
+                    <span class="help-block"></span>
+                  </div>
+                  <div id="loginErrorMsg" class="alert alert-danger hide">Wrong username or password</div>
+                  <button type="submit" value="login" name="submit" class="btn btn-success btn-block">Login / Register</button>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <p class="lead"><span class="text-success">FREE</span> and always be!</p>
+              <ul class="list-unstyled" style="line-height: 2">
+                <li><span class="fa fa-check text-success"></span> Nothing is related to your social account</li>
+                <li><span class="fa fa-check text-success"></span> Nothing is related to your private info</li>
+                <li><span class="fa fa-check text-success"></span> Nothing is related to data mining or something like that</li>
+                <li><span class="fa fa-check text-success"></span> Nothing is saved after you quit</li>
+                <li><span class="fa fa-check text-success"></span> Just <span class="text-success">private</span></li>
+              </ul>
+              <p><button type="submit" value="login" name="submit" class="btn btn-success btn-block">Sound good! Login / Register now!</button></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
