@@ -1,0 +1,72 @@
+//Font  Awesome folder change
+//Do not copy this find into Rails
+$fa-font-path: "../../bower_components/font-awesome/fonts";
+//== Project customize color
+$font-japanese: "Noto Sans CJK JP", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-english: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$color-black: #010028;
+$color-blue: #03a2c3;
+$color-green: #98c303;
+$color-red: #d80061;
+$color-white: #ffffff;
+$color-white-dark: #eceff2;
+$color-white-darker: #bfc6cc;
+$color-blue-gray: #586b7f;
+$color-gray: #858f9a;
+$color-gray-60: #999999;
+$color-orange: #d57e01;
+$color-red-dark: #c30303;
+$color-linen: #fcf2f2;
+$color-tomato: #ff6347;
+$color-blue-black: #21397A;
+$colors: ( 'black': $color-black, 'blue': $color-blue, 'blue-black': $color-blue-black, 'green': $color-green, 'red':$color-red, 'white': $color-white, 'white-dark': $color-white-dark, 'white-darker': $color-white-darker, 'blue-gray': $color-blue-gray, 'gray': $color-gray, 'orange': $color-orange, 'red-dark': $color-red-dark, 'linen': $color-linen, 'gray-60': $color-gray-60);
+
+$color-text: #0b2036;
+
+$color-input-hover-border: darken($color-white-darker, 15%);
+
+// edit bootstrap padding
+$grid-gutter-width: 20px;
+// declare heading style
+$font-size-xl: 42px;
+$font-size-h1: 32px;
+$font-size-h2: 24px;
+$font-size-h3: 20px;
+$font-size-h4: 16px;
+$font-size-h5: 14px;
+$font-size-h6: 12px;
+$font-size-xs: 10px;
+
+// Extra small screen / phone
+//** Deprecated `$screen-xs` as of v3.0.1
+$screen-xs:                  480px !default;
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xs-min:              $screen-xs !default;
+//** Deprecated `$screen-phone` as of v3.0.1
+$screen-phone:               $screen-xs-min !default;
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+//** Deprecated `$screen-tablet` as of v3.0.1
+$screen-tablet:              $screen-sm-min !default;
+
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md:                  992px !default;
+$screen-md-min:              $screen-md !default;
+//** Deprecated `$screen-desktop` as of v3.0.1
+$screen-desktop:             $screen-md-min !default;
+
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg:                  1200px !default;
+$screen-lg-min:              $screen-lg !default;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop:          $screen-lg-min !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;

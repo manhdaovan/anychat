@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Anychat</title>
-    <%= csrf_meta_tags %>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Anychat</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body id="<%= params[:controller] %>">
-    <div class="container">
-      <%= render 'layouts/components/home/header' %>
-      <%= yield %>
-      <%= render 'layouts/components/home/footer' %>
-    </div>
-  </body>
+<body id="<%= params[:controller] %>">
+<div class="container">
+  <%= render 'layouts/components/home/header' %>
+  <%= yield %>
+  <%= render 'layouts/components/home/footer' %>
+</div>
+</body>
 </html>
