@@ -6,4 +6,5 @@ Rails.application.routes.draw do
       put :logout
     end
   end
+  root to: 'home#index'
 end

@@ -4,11 +4,15 @@
     <title>Anychat</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body id="<%= params[:controller] %>">
+    <div class="container">
+      <%= render 'layouts/components/home/header' %>
+      <%= yield %>
+      <%= render 'layouts/components/home/footer' %>
+    </div>
   </body>
 </html>
