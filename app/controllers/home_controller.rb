@@ -9,11 +9,13 @@ class HomeController < ApplicationController
       user = User.find_by(username: @user.username)
       if user.nil?
         @user.save
-        flash[:success] = 'Your account has been created!'
+        flash[:success] = 'Your account has been created! Welcome to your anychat!'
+        session[:user_id] = @user.id
         redirect_to root_path
       else
         if user.authenticate(login_params.fetch(:password, nil))
           flash[:success] = 'Welcome to your anychat!'
+          session[:user_id] = user.id
           redirect_to root_path
         else
           @user.errors.add(:password, 'invalid')
