@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'rqrcode'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -52,9 +54,12 @@ group :development do
   gem 'annotate'
 end
 
-group :production do
-  # Use Redis adapter to run Action Cable in production
+group :production, :development do
   gem 'redis', '~> 3.0'
+  gem 'redis-rails', '~> 5'
+  gem 'redis-store'
+  # Rack middleware for blocking & throttling
+  gem 'rack-attack'
 end
 
 group :test do
