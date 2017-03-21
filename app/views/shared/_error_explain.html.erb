@@ -1,0 +1,7 @@
+<% unless obj.errors.full_messages.blank? %>
+  <div id="loginErrorMsg" class="alert alert-danger">
+    <% obj.errors.full_messages.each do |msg| %>
+      ・<%= msg %><br/>
+    <% end %>
+  </div>
+<% end %>

@@ -10,15 +10,22 @@
   <title>Anychat</title>
   <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  <% flash.each do |key, value| %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        window["toastr"]["<%= key %>"]('<%= value %>');
+      });
+    </script>
+  <% end %>
 </head>
 
 <body id="<%= params[:controller] %>">
 <div class="container">
   <%= render 'layouts/components/home/header' %>
   <div class="content">
-  <%= yield %>
+    <%= yield %>
   </div>
   <%= render 'layouts/components/home/footer' %>
 </div>
