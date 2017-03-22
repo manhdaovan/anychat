@@ -1,0 +1,7 @@
+<%= search_form_for @q, url: rooms_path do |f| %>
+
+  <%= f.label :username %>
+  <%= f.search_field :username %>
+
+  <%= f.submit %>
+<% end %>

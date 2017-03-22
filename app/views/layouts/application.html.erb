@@ -15,7 +15,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
   <% flash.each do |key, value| %>
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).ready(function () {
         window["toastr"]["<%= key %>"]('<%= value %>');
       });
     </script>
@@ -24,7 +24,9 @@
 
 <body id="<%= params[:controller] %>">
 <div class="container">
-  <%= render 'layouts/components/home/header' %>
+  <% if params[:controller] == 'home' %>
+    <%= render 'layouts/components/home/header' %>
+  <% end %>
   <div class="content">
     <%= yield %>
   </div>
