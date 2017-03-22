@@ -10,9 +10,9 @@
 #
 
 class User < ApplicationRecord
-  USERNAME_REGEX = /[a-zA-Z0-9]/
+  USERNAME_REGEX = /\A[a-zA-Z0-9\.@_-]+\z/i
   has_secure_password
 
-  validates :username, presence: true, length: {minimum: 6, maximum: 50}, format: USERNAME_REGEX
+  validates :username, presence: true, length: {minimum: 6, maximum: 50}, format: {with: USERNAME_REGEX}
   validates :password, presence: true, length: {minimum: 8, maximum: 50}
 end

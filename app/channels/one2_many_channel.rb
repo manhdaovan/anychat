@@ -1,17 +1,17 @@
 class One2ManyChannel < ApplicationCable::Channel
   def subscribed
-    current_user.appear
+    puts "subscribed current_user", current_user.id
   end
 
   def unsubscribed
-    current_user.disappear
+    puts "unsubscribed current_user", current_user.id
   end
 
   def appear(data)
-    current_user.appear on: data['appearing_on']
+    puts "appear current_user", current_user.id
   end
 
   def away
-    current_user.away
+    puts "away current_user", current_user.id
   end
 end
