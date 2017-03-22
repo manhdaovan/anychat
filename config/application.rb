@@ -14,5 +14,12 @@ module Anychat
     if Rails.env.development? || Rails.env.production?
       config.middleware.use Rack::Attack
     end
+
+    config.action_cable.mount_path = '/chat'
+    config.action_cable.log_tags   = [
+      :action_cable,
+      -> request { request.cookies["user_id"].nil? ? "no-account" : 'loggedin-user' },
+      -> request { request.uuid }
+    ]
   end
 end
