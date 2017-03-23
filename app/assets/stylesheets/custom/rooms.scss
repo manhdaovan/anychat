@@ -107,7 +107,7 @@
     border: 1px dotted gray;
   }
 
-  .list-users, .any-messages-box {
+  .list-users, #any-messages-boxes {
     margin-top: 30px;
   }
 
@@ -185,7 +185,7 @@
   /* Style page content - 
   use this if you want to push the page content
   to the right when you open the side navigation */
-  #main {
+  #any-messages-boxes {
     transition: margin-left .5s;
     padding: 20px;
   }
