@@ -6,11 +6,13 @@
       </a>
     </div>
   </div>
-  <div class="col-md-4 left-part-list-users">
+  <div class="col-md-4 left-part-list-users sidenav nav-open" id="mySidenav">
+    <div class="row">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
     <%= render 'shared/user_search_box', q: @q %>
   </div>
-  <div class="col-md-8 any-messages-box">
-
+  <div class="col-md-8 any-messages-box" id="main">
     <%= render 'shared/messages_box' %>
   </div>
 </div>

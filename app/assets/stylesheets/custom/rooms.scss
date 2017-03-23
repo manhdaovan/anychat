@@ -6,6 +6,10 @@
     > a {
       border-bottom: 1px dotted gray;
     }
+    display: none;
+    @include screen-xs {
+      display: block;
+    }
   }
 
   /* .bubble */
@@ -92,50 +96,113 @@
     right: -5px;
   }
 
-  .left-part-list-users {
-    @include screen-xs {
-      display: none;
-    }
-  }
-
   .list-users {
     overflow-y: scroll;
-    @include screen-lg{
+    @include screen-lg {
       max-height: 600px;
     }
-    @include screen-md{
+    @include screen-xs {
       max-height: 400px;
     }
-    @include screen-sm {
-      max-height: 300px;
-    }
-    @include screen-xs {
-      max-height: 200px;
-    }
     border: 1px dotted gray;
+  }
+
+  .list-users, .any-messages-box {
+    margin-top: 30px;
   }
 
   #anychat-message-boxes {
     overflow-y: scroll;
-    @include screen-lg{
+    @include screen-lg {
       max-height: 600px;
     }
-    @include screen-md{
-      max-height: 400px;
-    }
-    @include screen-sm {
-      max-height: 300px;
-    }
     @include screen-xs {
-      max-height: 250px;
+      max-height: 400px;
     }
     border: 1px dotted gray;
   }
-  
+
   .list-user-item {
     border-bottom: 1px dotted gray;
     cursor: pointer;
     height: 40px;
     line-height: 40px;
+  }
+
+  /* The side navigation menu */
+  .sidenav {
+    height: 100%; /* 100% Full-height */
+    @include screen-xs {
+      width: 0;
+    }
+    &.nav-open{
+      width: 20.3333%; /* 0 width - change this with JavaScript */
+      @include screen-xs{
+        width: 85%;
+      }
+    }
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    display: none;
+    @include screen-xs {
+      display: block;
+    }
+  }
+
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover, .offcanvas a:focus {
+    color: #f1f1f1;
+  }
+
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    @include screen-xs{
+      top: -15px;
+    }
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  /* Style page content - 
+  use this if you want to push the page content
+  to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+
+  /* On smaller screens, where height is less than 450px,
+   change the style of the sidenav
+   (less padding and a smaller font size) */
+  @include screen-xs {
+    .sidenav {
+      padding-top: 45px;
+    }
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+  .left-part-list-users{
+    padding-left: 0;
+    padding-right: 0;
   }
 }

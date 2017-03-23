@@ -3,7 +3,7 @@
     <%= search_form_for q, url: users_path, remote: true do |f| %>
       <div class="row">
         <div class="col-8"><%= f.search_field :username_cont,
-                                              class: 'form-control',
+                                              class:       'form-control',
                                               placeholder: 'Search by username' %></div>
         <div class="col-2"><%= f.submit 'search', class: 'btn btn-success btn-submit' %></div>
       </div>
@@ -13,9 +13,6 @@
     <ul id="anychat-list-users">
       <li class="list-user-item current dark text-info">Manh dv1</li>
       <li class="list-user-item current dark text-info">Manh dv2</li>
-      <!-- <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
       <li class="list-user-item current dark">Manh dv3</li>
       <li class="list-user-item current dark text-info">Manh dv1</li>
       <li class="list-user-item current dark text-info">Manh dv2</li>
@@ -37,18 +34,28 @@
       <li class="list-user-item current dark">Manh dv3</li>
       <li class="list-user-item current dark text-info">Manh dv1</li>
       <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li> -->
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
     </ul>
   </div>
 </div>
 
 <script type="text/javascript">
   $('.search-icon').click(function () {
-    var listUser = $('.left-part-list-users');
-    if (listUser.is(':visible')) {
-      $('.left-part-list-users').hide();
-    } else {
-      $('.left-part-list-users').show();
-    }
+    openNav();
   });
+
+  /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+  function openNav() {
+    $("#mySidenav").addClass('nav-open');
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  }
+
+  /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+  function closeNav() {
+    $("#mySidenav").removeClass('nav-open');
+    document.body.style.backgroundColor = "white";
+  }
 </script>
