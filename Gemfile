@@ -65,6 +65,7 @@ group :production, :development do
   gem 'redis-store'
   # Rack middleware for blocking & throttling
   gem 'rack-attack'
+  gem 'sidekiq'
 end
 
 group :test do
