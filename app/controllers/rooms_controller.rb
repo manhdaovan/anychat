@@ -3,5 +3,6 @@ class RoomsController < ApplicationController
   before_action :require_login, :store_next_url
 
   def index
+    @q = User.ransack(params[:q])
   end
 end

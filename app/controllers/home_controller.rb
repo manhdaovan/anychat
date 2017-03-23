@@ -11,13 +11,13 @@ class HomeController < ApplicationController
         store_user_info(@user)
         mark_user_online(@user)
         flash[:success] = 'Your account has been created! Welcome to your anychat!'
-        redirect_back_or root_path
+        redirect_back_or rooms_path
       else
         if user.authenticate(login_params.fetch(:password, nil))
           store_user_info(user)
           mark_user_online(user)
           flash[:success] = 'Welcome to your anychat!'
-          redirect_back_or root_path
+          redirect_back_or rooms_path
         else
           @user.errors.add(:password, 'invalid')
           render :index

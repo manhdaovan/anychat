@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :require_login, :store_next_url
 
   def index
-    @q = User.ransack(params[:q])
-    @people = @q.result(distinct: true)
+    @q = User.search(params[:q])
+    @users = @q.result.page(params.fetch(:page, 1)).per(15)
   end
 
   def edit
