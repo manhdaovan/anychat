@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index]
   resources :messages, only: [:create]
   get 'messages/:username', to: 'messages#index', constraints: {username: /[a-zA-Z0-9\.@_-]+/i}
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:index, :edit, :update]
 
   root to: 'home#index'
 end

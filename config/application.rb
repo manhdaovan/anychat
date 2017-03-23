@@ -16,10 +16,10 @@ module Anychat
     end
 
     config.action_cable.mount_path = '/chat'
-    config.action_cable.log_tags   = [
-      :action_cable,
-      -> request { request.cookies["user_id"].nil? ? "no-account" : 'loggedin-user' },
-      -> request { request.uuid }
-    ]
+    # config.action_cable.log_tags   = [
+    #   :action_cable,
+    #   -> request { request.cookies["user_id"].nil? ? "no-account" : 'loggedin-user' },
+    #   -> request { request.uuid }
+    # ]
   end
 end

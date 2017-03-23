@@ -8,16 +8,16 @@ class HomeController < ApplicationController
     if @user.valid?
       user = User.find_by(username: @user.username)
       if user.nil? && @user.save
-        Rails.cache.write(user.username, Time.zone.now, expires_in: 15.seconds)
+        store_user_info(@user)
+        mark_user_online(@user)
         flash[:success] = 'Your account has been created! Welcome to your anychat!'
-        cookies.signed[:user_id] = @user.id
-        redirect_to root_path
+        redirect_back_or root_path
       else
         if user.authenticate(login_params.fetch(:password, nil))
-          Rails.cache.write(user.username, Time.zone.now, expires_in: 15.seconds)
+          store_user_info(user)
+          mark_user_online(user)
           flash[:success] = 'Welcome to your anychat!'
-          cookies.signed[:user_id] = user.id
-          redirect_to root_path
+          redirect_back_or root_path
         else
           @user.errors.add(:password, 'invalid')
           render :index

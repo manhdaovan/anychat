@@ -1,17 +1,11 @@
 class One2OneChannel < ApplicationCable::Channel
+  ONE2ONE_CHANNEL_NAME = 'ONE2ONE_%s'
   def subscribed
-    puts "subscribed current_user", current_user.id
+    stream_from channel_key_name(current_user)
   end
 
-  def unsubscribed
-    puts "unsubscribed current_user", current_user.id
-  end
-
-  def appear(data)
-    puts "appear current_user", current_user.id
-  end
-
-  def away
-    puts "away current_user", current_user.id
+  def self.channel_key_name(user)
+    username = user.respond_to?(:username) ? user.username : user
+    format(ONE2ONE_CHANNEL_NAME, username)
   end
 end
