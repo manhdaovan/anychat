@@ -1,18 +1,26 @@
 #rooms {
-  /* .bubble */
+  .search-icon {
+    margin-left: 20px;
+    font-size: 40px;
+    cursor: pointer;
+    > a {
+      border-bottom: 1px dotted gray;
+    }
+  }
 
+  /* .bubble */
   .bubble {
-    background-image: linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
-    background-image: -o-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
-    background-image: -moz-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
-    background-image: -webkit-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
-    background-image: -ms-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
+    background-image: linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(210, 244, 254) 25%, rgb(149, 194, 253) 100%);
     background-image: -webkit-gradient(
                     linear,
                     left bottom,
                     left top,
-                    color-stop(0.25, rgb(210,244,254)),
-                    color-stop(1, rgb(149,194,253))
+                    color-stop(0.25, rgb(210, 244, 254)),
+                    color-stop(1, rgb(149, 194, 253))
     );
     border: solid 1px rgba(0, 0, 0, 0.5);
     /* vendor rules */
@@ -55,17 +63,17 @@
   }
 
   .bubble--alt {
-    background-image: linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
-    background-image: -o-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
-    background-image: -moz-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
-    background-image: -webkit-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
-    background-image: -ms-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
+    background-image: linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(172, 228, 75) 25%, rgb(122, 205, 71) 100%);
     background-image: -webkit-gradient(
                     linear,
                     left bottom,
                     left top,
-                    color-stop(0.25, rgb(172,228,75)),
-                    color-stop(1, rgb(122,205,71))
+                    color-stop(0.25, rgb(172, 228, 75)),
+                    color-stop(1, rgb(122, 205, 71))
     );
     float: right;
   }
@@ -82,5 +90,52 @@
     border-radius: 20px / 10px;
     left: auto;
     right: -5px;
+  }
+
+  .left-part-list-users {
+    @include screen-xs {
+      display: none;
+    }
+  }
+
+  .list-users {
+    overflow-y: scroll;
+    @include screen-lg{
+      max-height: 600px;
+    }
+    @include screen-md{
+      max-height: 400px;
+    }
+    @include screen-sm {
+      max-height: 300px;
+    }
+    @include screen-xs {
+      max-height: 200px;
+    }
+    border: 1px dotted gray;
+  }
+
+  #anychat-message-boxes {
+    overflow-y: scroll;
+    @include screen-lg{
+      max-height: 600px;
+    }
+    @include screen-md{
+      max-height: 400px;
+    }
+    @include screen-sm {
+      max-height: 300px;
+    }
+    @include screen-xs {
+      max-height: 250px;
+    }
+    border: 1px dotted gray;
+  }
+  
+  .list-user-item {
+    border-bottom: 1px dotted gray;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
   }
 }

@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-12 search-box">
+    <%= search_form_for q, url: users_path, remote: true do |f| %>
+      <div class="row">
+        <div class="col-8"><%= f.search_field :username_cont,
+                                              class: 'form-control',
+                                              placeholder: 'Search by username' %></div>
+        <div class="col-2"><%= f.submit 'search', class: 'btn btn-success btn-submit' %></div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-12 list-users">
+    <ul id="anychat-list-users">
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <!-- <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li>
+      <li class="list-user-item current dark text-info">Manh dv1</li>
+      <li class="list-user-item current dark text-info">Manh dv2</li>
+      <li class="list-user-item current dark">Manh dv3</li> -->
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.search-icon').click(function () {
+    var listUser = $('.left-part-list-users');
+    if (listUser.is(':visible')) {
+      $('.left-part-list-users').hide();
+    } else {
+      $('.left-part-list-users').show();
+    }
+  });
+</script>

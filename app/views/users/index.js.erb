@@ -1,0 +1,5 @@
+var listUsers = $('#anychat-list-users');
+listUsers.find('li.search').remove();
+<% @users.each do |u| %>
+listUsers.append('<%= j(render 'user_item', user: u)%>');
+<% end %>
