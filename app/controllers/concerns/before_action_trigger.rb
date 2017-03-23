@@ -1,8 +1,6 @@
-module LoginRequired
+module BeforeActionTrigger
   extend ActiveSupport::Concern
   included do
-    before_action :require_login
-
     def require_login
       return unless session[:user_id].nil?
       if request.xhr?
