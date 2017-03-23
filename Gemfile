@@ -38,8 +38,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Create url to QR in image format
 gem 'rqrcode'
 
-# Search, sort
-gem 'ransack'
+gem 'ransack' # Search, sort
+gem 'kaminari' # Use paging
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
