@@ -10,6 +10,8 @@
 #         edit_user GET   /users/:id/edit(.:format)     users#edit
 #              user PATCH /users/:id(.:format)          users#update
 #                   PUT   /users/:id(.:format)          users#update
+#      users_online POST  /users/online(.:format)       users#check_online
+#             users POST  /users(.:format)              users#index
 #              root GET   /                             home#index
 #
 
@@ -25,7 +27,10 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index]
   resources :messages, only: [:create]
   get 'messages/:username', to: 'messages#index', constraints: {username: /[a-zA-Z0-9\.@_-]+/i}
-  resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:edit, :update]
+
+  post 'users/online', to: 'users#check_online', constraints: {username: /[a-zA-Z0-9\.@_-]+/i}
+  post 'users', to: 'users#index'
 
   root to: 'home#index'
 end
