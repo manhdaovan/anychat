@@ -9,13 +9,11 @@ class HomeController < ApplicationController
       user = User.find_by(username: @user.username)
       if user.nil? && @user.save
         store_user_info(@user)
-        mark_user_online(@user)
         flash[:success] = 'Your account has been created! Welcome to your anychat!'
         redirect_back_or rooms_path
       else
         if user.authenticate(login_params.fetch(:password, nil))
           store_user_info(user)
-          mark_user_online(user)
           flash[:success] = 'Welcome to your anychat!'
           redirect_back_or rooms_path
         else

@@ -4,10 +4,10 @@ module ApplicationHelper
   end
 
   def store_user_info(user)
-    cache_key = user.respond_to?(:username) ? user.username : user
+    cache_key   = user.respond_to?(:username) ? user.username : user
     cache_value = user.respond_to?(:username) ? user.id : user
     Rails.cache.write(cache_key, cache_value)
-    session[:username] = cache_key
+    session[:username]        = cache_key
     cookies.signed[:username] = cache_key
   end
 
@@ -16,8 +16,4 @@ module ApplicationHelper
     !Rails.cache.read(cache_key).blank?
   end
 
-  def mark_user_online(user)
-    ActionCable.server.broadcast(AppearanceChannel::ONLINE_CHANNEL_NAME,
-                                 {type: 'online', username: user.username})
-  end
 end
