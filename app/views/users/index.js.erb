@@ -1,5 +1,9 @@
+<% if @users.count == 0 %>
+toastr.warning('Cannot found user: ' + '<%= params.fetch(:q, {}).fetch('username_cont', '') %>');
+<% else %>
 var listUsers = $('#anychat-list-users');
 listUsers.find('li.search').remove();
 <% @users.each do |u| %>
 listUsers.append('<%= j(render 'user_item', user: u)%>');
+<% end %>
 <% end %>

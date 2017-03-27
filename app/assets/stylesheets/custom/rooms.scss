@@ -133,15 +133,15 @@
   .sidenav {
     height: 100%; /* 100% Full-height */
     @include screen-xs {
-      width: 0;
+      width: 0; /* 0 width - change this with JavaScript */
     }
     &.nav-open{
-      width: 20.3333%; /* 0 width - change this with JavaScript */
+      width: 20.3333%;
       @include screen-xs{
         width: 85%;
       }
     }
-    position: fixed; /* Stay in place */
+//    position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
@@ -204,5 +204,18 @@
   .left-part-list-users{
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .list-user-item {
+    color: antiquewhite;
+  }
+
+  .user-info .icon-online{
+    &.online{
+      color: #5bc0de;
+    }
+    &.offline{
+      color: antiquewhite;
+    }
   }
 }

@@ -1,9 +1,7 @@
 <div id="message-box-template" class="hide">
   <div class="row message-box-item" id="msg-box-for-username1">
     <div class="col-12 user-info">
-      <div class="bubble">
-        Blue text bubble
-      </div>
+      <span class="icon-online"><i class="fa fa-circle-o"></i></span>&nbsp;<span>manhdv123123</span>
     </div>
     <div class="col-12" id="anychat-message-boxes">
       <div id="anychat-message-box-item-1">
@@ -14,6 +12,64 @@
           Green text bubble
         </div>
       </div>
+      <div id="anychat-message-box-item-1">
+        <div class="bubble">
+          Blue text bubble
+        </div>
+        <div class="bubble bubble--alt">
+          Green text bubble
+        </div>
+      </div>
+      <div id="anychat-message-box-item-1">
+        <div class="bubble">
+          Blue text bubble
+        </div>
+        <div class="bubble bubble--alt">
+          Green text bubble
+        </div>
+      </div>
+      <div id="anychat-message-box-item-1">
+        <div class="bubble">
+          Blue text bubble
+        </div>
+        <div class="bubble bubble--alt">
+          Green text bubble
+        </div>
+      </div>
+      <div id="anychat-message-box-item-1">
+        <div class="bubble">
+          Blue text bubble
+        </div>
+        <div class="bubble bubble--alt">
+          Green text bubble
+        </div>
+      </div>
     </div>
+    <div class="col-12" id="anychat-msg-form">
+      <form id="msg_create" action="/messages" accept-charset="UTF-8"
+            data-remote="true" method="post">
+        <input name="utf8" type="hidden" value="✓">
+        <input type="hidden" name="from_user" value="<%= current_user.username %>">
+        <input type="hidden" name="to_user" value="">
+
+        <div class="row">
+          <div class="col-12">
+          <textarea class="form-control auto-resize" rows="5" cols="5"
+                    placeholder="Say something to that guy!"></textarea>
+          </div>
+          <div class="col-12 text-right">
+            <input type="submit" value="Send" class="btn btn-sm btn-success btn-submit"/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row message-box-item">
+  <div class="col-12 no-selected-conversation">
+    <p class="alert alert-info">
+      No selected conversation!<br/>
+      Please search and select the guy that you want to talk to.
+    </p>
   </div>
 </div>

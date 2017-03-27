@@ -12,33 +12,6 @@
   </div>
   <div class="col-md-12 list-users">
     <ul id="anychat-list-users">
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
-      <li class="list-user-item current dark text-info">Manh dv1</li>
-      <li class="list-user-item current dark text-info">Manh dv2</li>
-      <li class="list-user-item current dark">Manh dv3</li>
     </ul>
   </div>
 </div>
@@ -50,13 +23,17 @@
 
   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
   function openNav() {
-    $("#mySidenav").addClass('nav-open');
+    $("#mySidenav").addClass('nav-open').show(500);
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
   }
 
   /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
   function closeNav() {
-    $("#mySidenav").removeClass('nav-open');
+    $("#mySidenav").removeClass('nav-open').hide(500);
     document.body.style.backgroundColor = "white";
   }
+  <% if selected_username %>
+    $('.search-box input[name="q[username_cont]"]').val("<%= selected_username %>");
+    $('.search-box input[type="submit"]').click();
+  <% end %>
 </script>
