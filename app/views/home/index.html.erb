@@ -12,16 +12,16 @@
             <div class="well">
               <%= form_for @user, url: login_home_index_path, method: :post do |f| %>
                 <div class="form-group">
-                  <label for="username" class="control-label">6 <= username.length <= 50</label>
+                  <label for="username" class="control-label"><span class="text-danger">※</span> 6 <= username.length <= 50</label>
 
                   <div class="notice">Pick any [a-zA-Z0-9] nickname!</div>
                   <%= f.text_field :username, class: 'form-control',
                                    title:            'Please enter your username',
-                                   placeholder:      'username' %>
+                                   placeholder:      'Username' %>
                   <span class="help-block"></span>
                 </div>
                 <div class="form-group">
-                  <label for="password" class="control-label">8 <= password.length <= 50</label>
+                  <label for="password" class="control-label"><span class="text-danger">※</span> 8 <= password.length <= 50</label>
 
                   <div class="notice">Pls
                     <span class="text-danger">REMEMBER</span>
@@ -29,8 +29,25 @@
                     password mode!
                   </div>
                   <%= f.text_field :password, type: 'password', class: 'form-control',
-                                   placeholder:     'password',
+                                   placeholder:     'Password',
                                    title:           'Please enter your password' %>
+                  <span class="help-block"></span>
+                </div>
+                <div class="form-group">
+                  <div class="notice"><span class="text-danger">※</span> Confirmation password</div>
+                  <%= f.text_field :password_confirmation, type: 'password', class: 'form-control',
+                                   placeholder:     'Confirmation password',
+                                   title:           'Please enter your password again' %>
+                  <span class="help-block"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="Email" class="control-label">Email (Optional)</label>
+
+                  <div class="notice">The first and only first message will be sent to this email when you offline.</div>
+                  <%= f.text_field :email, class: 'form-control',
+                                   placeholder:     'Email will be used when you offline.',
+                                   title:           'Email will be used when you offline.' %>
                   <span class="help-block"></span>
                 </div>
 

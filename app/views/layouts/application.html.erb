@@ -24,10 +24,15 @@
 
 <body id="<%= params[:controller] %>">
 <div class="container">
+  <!-- nav bar if logged in -->
+  <% if current_user %>
+    <%= render 'layouts/components/anychat/top_menu' %>
+  <% end %>
+  <!-- ./ nav bar -->
   <% if params[:controller] == 'home' %>
     <%= render 'layouts/components/home/header' %>
   <% end %>
-  <div class="content">
+  <div>
     <%= yield %>
   </div>
   <%= render 'layouts/components/home/footer' %>

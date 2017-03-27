@@ -26,9 +26,14 @@ class HomeController < ApplicationController
     end
   end
 
+  def logout
+    logout_user
+    redirect_to root_path
+  end
+
   private
 
   def login_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end

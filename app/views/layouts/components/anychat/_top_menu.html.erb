@@ -1,0 +1,74 @@
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<div class="row" id="top-menu">
+  <input type="hidden" name="current_username" value="<%= current_user.username %>">
+
+  <div class="col-8 logo text-left">
+    <div class="row">
+      <div class="col-12">You can support me by:</div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-2 text-left">
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/manhdaovan/anychat" data-icon="octicon-star" data-style="mega" data-count-href="/manhdaovan/anychat/stargazers" data-count-api="/repos/manhdaovan/anychat#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star manhdaovan/anychat on GitHub">Star</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-4 my-account text-right">
+    <a onclick="showMyMenu()"><i class="fa fa-user">&nbsp;<%= current_user.username %></i></a>
+    <ul class="list-unstyled hide" id="my-account-menu">
+      <li><a data-toggle="modal" data-target="#current-user-profile-modal"><i class="fa fa-gears"></i>Setting</a></li>
+      <li><a href="<%= logout_home_index_path %>" data-method="delete">
+        <i class="fa fa-sign-out"></i>Sign out</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Current User Profile Modal -->
+<div class="modal fade" id="current-user-profile-modal" tabindex="-1"
+     role="dialog" aria-labelledby="current-user-profile-modal-label"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="current-user-profile-modal-label"><%= current_user.username %> Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_for current_user, remote: true do |f| %>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <%= f.text_field :username, disabled: :disabled, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input type="password" disabled="disabled" value="***********" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
+              <%= f.text_field :email, placeholder: 'Not set', class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div><!-- ./ User Profile Modal -->
+
+<script type="text/javascript">
+  var topMenu = $('#my-account-menu');
+  function showMyMenu() {
+    topMenu.toggleClass('hide');
+  }
+</script>

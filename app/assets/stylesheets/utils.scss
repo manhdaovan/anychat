@@ -27,3 +27,23 @@
 .hide{
   display: none;
 }
+
+// margin, padding
+@each $prop in margin, padding {
+  @each $value in 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
+    .#{$prop}-#{$value} {
+      #{$prop}: #{$value}px;
+    }
+
+    @each $orientation in top, right, bottom, left {
+      .#{$prop}-#{$orientation}-#{$value} {
+        #{$prop}-#{$orientation}: #{$value}px;
+      }
+    }
+  }
+}
+
+a {
+  color: #5bc0de !important;
+  cursor: pointer;
+}

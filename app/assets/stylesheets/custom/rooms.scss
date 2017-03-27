@@ -135,13 +135,13 @@
     @include screen-xs {
       width: 0; /* 0 width - change this with JavaScript */
     }
-    &.nav-open{
+    &.nav-open {
       width: 20.3333%;
-      @include screen-xs{
+      @include screen-xs {
         width: 85%;
       }
     }
-//    position: fixed; /* Stay in place */
+    //    position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
@@ -174,7 +174,7 @@
   .sidenav .closebtn {
     position: absolute;
     top: 0;
-    @include screen-xs{
+    @include screen-xs {
       top: -15px;
     }
     right: 25px;
@@ -201,7 +201,7 @@
       font-size: 18px;
     }
   }
-  .left-part-list-users{
+  .left-part-list-users {
     padding-left: 0;
     padding-right: 0;
   }
@@ -210,12 +210,30 @@
     color: antiquewhite;
   }
 
-  .user-info .icon-online{
-    &.online{
-      color: #5bc0de;
+  .user-info {
+    .icon-online {
+      color: gray;
+      &.online {
+        color: #5bc0de;
+      }
     }
-    &.offline{
-      color: antiquewhite;
+    .username {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+  }
+
+  #my-account-menu {
+    li {
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+        height: 100%;
+        line-height: 45px;
+      }
+      height: 45px;
     }
   }
 }

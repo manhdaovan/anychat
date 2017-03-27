@@ -1,0 +1,9 @@
+<% if current_user.errors.blank? %>
+toastr.info('Update user email success! Confirmation email will be sent to you soon.');
+<% else %>
+var errorMsg = '';
+<% current_user.errors.full_messages.each do |msg| %>
+errorMsg += '<%= msg %>\n';
+<% end %>
+toastr.error(errorMsg);
+<% end %>
