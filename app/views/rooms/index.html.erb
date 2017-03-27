@@ -10,7 +10,7 @@
     <div class="row">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     </div>
-    <%= render 'shared/user_search_box', q: @q %>
+    <%= render 'shared/user_search_box', q: @q, selected_username: @selected_username %>
   </div>
   <div class="col-md-8" id="any-messages-boxes">
     <%= render 'shared/messages_box' %>

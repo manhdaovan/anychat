@@ -20,4 +20,10 @@ module ApplicationHelper
     !Rails.cache.read(cache_key).blank?
   end
 
+  def current_user
+    @current_user ||= begin
+      User.find_by(username: session[:username])
+    end
+  end
+
 end
