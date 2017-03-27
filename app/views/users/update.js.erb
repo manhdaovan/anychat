@@ -1,5 +1,6 @@
 <% if current_user.errors.blank? %>
 toastr.info('Update user email success! Confirmation email will be sent to you soon.');
+$('#current-user-profile-modal').modal('hide');
 <% else %>
 var errorMsg = '';
 <% current_user.errors.full_messages.each do |msg| %>

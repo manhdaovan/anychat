@@ -37,7 +37,7 @@ function buildMessageBox(from_username, to_username, extra_data) {
         } else {
             boxHtml.find('.user-info .icon-online').removeClass('online');
         }
-        boxHtml.find('form input[name="to_user"]').val(to_username);
+        boxHtml.find('form input[name="message[to_user]"]').val(to_username);
         boxHtml.find('.user-info .username').text(to_username);
         boxHtml.show();
         $('#any-messages-boxes').append(boxHtml);

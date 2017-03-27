@@ -18,15 +18,15 @@
       <form id="msg_create" action="/messages" accept-charset="UTF-8"
             data-remote="true" method="post">
         <input name="utf8" type="hidden" value="✓">
-        <input type="hidden" name="from_user" value="<%= current_user.username %>">
-        <input type="hidden" name="to_user" value="">
+        <input type="hidden" name="message[from_user]" value="<%= current_user.username %>">
+        <input type="hidden" name="message[to_user]" value="">
 
         <div class="row">
           <div class="col-12">
           <textarea class="form-control auto-resize required"
                     rows="5" cols="5" data-name="Message content"
                     data-required-msg="Please input some content before sending to that guy!"
-                    placeholder="Say something to that guy!" name="content"></textarea>
+                    placeholder="Say something to that guy!" name="message[msg_content]"></textarea>
           </div>
           <div class="col-12 text-right margin-top-20">
             <input type="submit" value="Send" class="btn btn-sm btn-success btn-submit"/>
