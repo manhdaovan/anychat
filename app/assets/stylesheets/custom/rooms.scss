@@ -111,7 +111,7 @@
     margin-top: 30px;
   }
 
-  #anychat-message-boxes {
+  .anychat-message-boxes {
     overflow-y: scroll;
     @include screen-lg {
       max-height: 600px;

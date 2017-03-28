@@ -1,0 +1,12 @@
+<% if @msg.errors.present? %>
+toastr.error('Fail to send message. Please refresh and try again.');
+<% else %>
+<% if @receiver_online %>
+addMessageItemToBox('<%= @msg.from_user%>', '<%= @msg.to_user %>',
+  buildMessageItem(<%= @msg.from_user == current_user.username%>,
+    '<%= @msg.msg_content %>'));
+<% else %>
+toastr.error('This guy is offline now. You cannot send message to him.');
+<% end %>
+
+<% end %>
