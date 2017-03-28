@@ -52,6 +52,17 @@ namespace :utils do
       system "scp .env #{fetch(:deployer)}@#{host}:#{shared_path}/"
     end
   end
+
+  desc 'Setup shared path'
+  task :setup_shared_path do
+    on roles(:web) do
+      within shared_path do
+        execute :mkdir, '-p tmp/pids tmp/cache tmp/sockets vendor/bundle'
+        execute :mkdir, '-p log'
+        execute :mkdir, '-p public/system'
+      end
+    end
+  end
 end
 
 namespace :nginx do
@@ -65,10 +76,20 @@ namespace :nginx do
     end
   end
 
+  desc 'Unset maintenance mode'
+  task :unset_503 do
+    on roles(:app) do
+      within release_path do
+        puts "===== Remove 503 mode to nginx ====="
+        execute :rm, 'tmp/maintenance.txt'
+      end
+    end
+  end
+
   desc 'Restart nginx'
   task :restart do
     on roles(:app) do
-      execute :sudo, 'service nginx restart'
+      execute :sudo, 'nginx -s reload'
     end
   end
 end
@@ -86,6 +107,8 @@ namespace :deploy do
   end
 end
 
+# before 'deploy:starting', 'nginx:set_503'
 # before 'deploy:starting', 'puma:stop'
 # before 'deploy:starting', 'utils:clear_cache'
 # after 'deploy:finished', 'puma:start'
+# after 'deploy:finished', 'nginx:unset_503'
