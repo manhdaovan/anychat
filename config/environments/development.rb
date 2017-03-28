@@ -58,4 +58,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_cable.url = ENV['CABLE_URL_DEV']
+
+  config.web_console.whitelisted_ips = '192.168.1.1/24'
 end

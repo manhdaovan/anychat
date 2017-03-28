@@ -41,6 +41,17 @@ namespace :utils do
       execute :rake, 'cache:clear'
     end
   end
+
+  desc 'Sync env'
+  task :sync_env do
+    on roles(:web) do
+      unless File.exist?('.env')
+        puts "[Error] There is no .env file.\n Exitting. \n "
+        exit
+      end
+      system "scp .env #{fetch(:deployer)}@#{host}:#{shared_path}/"
+    end
+  end
 end
 
 namespace :deploy do
@@ -50,6 +61,7 @@ namespace :deploy do
       set :linked_files, []
       set :linked_dirs, []
       invoke 'deploy'
+      invoke 'utils:sync_env'
       invoke 'puma:config'
       invoke 'puma:nginx_config'
     end

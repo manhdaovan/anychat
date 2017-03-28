@@ -21,7 +21,5 @@ module Anychat
     #   -> request { request.cookies["user_id"].nil? ? "no-account" : 'loggedin-user' },
     #   -> request { request.uuid }
     # ]
-
-    config.web_console.whitelisted_ips = '192.168.1.1/24'
   end
 end
