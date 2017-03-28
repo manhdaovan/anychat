@@ -2,9 +2,12 @@
 toastr.error('Fail to send message. Please refresh and try again.');
 <% else %>
 <% if @receiver_online %>
+// Add message to box
 addMessageItemToBox('<%= @msg.from_user%>', '<%= @msg.to_user %>',
   buildMessageItem(<%= @msg.from_user == current_user.username%>,
     '<%= @msg.msg_content %>'));
+// Clear input text
+clearMsgInput('<%= @msg.from_user%>', '<%= @msg.to_user %>');
 <% else %>
 toastr.error('This guy is offline now. You cannot send message to him.');
 <% end %>

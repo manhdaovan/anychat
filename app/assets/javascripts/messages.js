@@ -42,6 +42,9 @@ function buildMessageBox(from_username, to_username, extra_data) {
     if (box.length > 0) {
         if (extra_data.online) {
             box.find('.user-info .icon-online').addClass('online');
+            messageInput.removeAttr('disabled');
+            messageInput.attr('placeholder', 'Say something to that guy!');
+            box.find('input[type="submit"]').removeAttr('disabled');
         } else {
             box.find('.user-info .icon-online').removeClass('online');
             messageInput.attr('disabled', 'disabled');
@@ -81,4 +84,9 @@ function buildMessageItem(isMyMessage, message) {
 function addMessageItemToBox(from_user, to_user, messageItem) {
     var box = getMessageBox(from_user, to_user);
     box.find('.anychat-message-box-item').append(messageItem);
+}
+
+function clearMsgInput(from_user, to_user){
+    var box = getMessageBox(from_user, to_user);
+    box.find('textarea[name="message[msg_content]"]').val('');
 }
