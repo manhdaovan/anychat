@@ -3,11 +3,17 @@
     <%= search_form_for q, url: users_path, remote: true,
                         html: {method: :post} do |f| %>
       <div class="row">
-        <div class="col-8"><%= f.search_field :username_cont,
+        <div class="col-8">
+          <%= f.search_field :username_cont,
                                               class:       'form-control required',
                                               placeholder: 'Search by username',
                                               data: {name: 'Search by username',
-                                                     'required-msg' => 'Please input some text to search!'} %></div>
+                                                     'required-msg' => 'Please input some text to search!'} %>
+          <%= f.search_field :username_not_eq,
+                             value: current_user.username,
+                             class:       'hide'%>
+
+        </div>
         <div class="col-2"><%= f.submit 'search', class: 'btn btn-success btn-submit' %></div>
       </div>
     <% end %>
