@@ -12,6 +12,8 @@ set :rails_env, 'staging'
 set :branch, 'master'
 set :deploy_to, '/var/www/anychat/'
 server 'anychat.4me.tips', user: 'manhdv', roles: %w(app db web)
+
+# extra params for deployment
 set :deployer, 'manhdv'
 
 

@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.1'
+lock '3.8.0'
 
 set :application, 'anychat'
 set :repo_url, 'git@github.com:manhdaovan/anychat.git'
@@ -54,14 +54,32 @@ namespace :utils do
   end
 end
 
+namespace :nginx do
+  desc 'Set maintenance mode'
+  task :set_503 do
+    on roles(:app) do
+      within release_path do
+        puts "===== Enable 503 mode to nginx ====="
+        execute :touch, 'tmp/maintenance.txt'
+      end
+    end
+  end
+
+  desc 'Restart nginx'
+  task :restart do
+    on roles(:app) do
+      execute :sudo, 'service nginx restart'
+    end
+  end
+end
+
 namespace :deploy do
   desc 'Init project in first and only first deploy'
   task :init do
     on roles(:app) do
-      set :linked_files, []
+      set :linked_files, ['.env']
       set :linked_dirs, []
       invoke 'deploy'
-      invoke 'utils:sync_env'
       invoke 'puma:config'
       invoke 'puma:nginx_config'
     end

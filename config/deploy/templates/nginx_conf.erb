@@ -65,6 +65,10 @@ server {
     root html;
   }
 
+  if (-f $document_root/../tmp/maintenance.txt){
+    return 503;
+  }
+
   location @503 {
     error_page 405 = /system/maintenance.html;
     if (-f $document_root/system/maintenance.html) {
