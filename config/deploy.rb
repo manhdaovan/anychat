@@ -23,7 +23,7 @@ set :repo_url, 'git@github.com:manhdaovan/anychat.git'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', '.env')
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -38,7 +38,9 @@ namespace :utils do
   desc 'Clear cache'
   task :clear_cache do
     on roles(:web) do
-      execute :rake, 'cache:clear'
+      within current_path do
+        execute :rake, 'tmp:clear'
+      end
     end
   end
 
@@ -81,7 +83,7 @@ namespace :nginx do
     on roles(:app) do
       within release_path do
         puts "===== Remove 503 mode to nginx ====="
-        execute :rm, 'tmp/maintenance.txt'
+        execute :rm, '-f tmp/maintenance.txt'
       end
     end
   end
@@ -107,8 +109,8 @@ namespace :deploy do
   end
 end
 
-# before 'deploy:starting', 'nginx:set_503'
-# before 'deploy:starting', 'puma:stop'
-# before 'deploy:starting', 'utils:clear_cache'
-# after 'deploy:finished', 'puma:start'
-# after 'deploy:finished', 'nginx:unset_503'
+before 'deploy:starting', 'nginx:set_503'
+before 'deploy:starting', 'puma:stop'
+before 'deploy:starting', 'utils:clear_cache'
+after 'deploy:finished', 'puma:start'
+after 'deploy:finished', 'nginx:unset_503'
