@@ -19,6 +19,12 @@ test:
   username: <%= ENV['DB_TEST_USERNAME'] %>
   password: <%= ENV['DB_TEST_PASSWORD'] %>
 
+staging:
+  <<: *default
+  database: <%= ENV['DB_STAGING_NAME'] %>
+  username: <%= ENV['DB_STAGING_USERNAME'] %>
+  password: <%= ENV['DB_STAGING_PASSWORD'] %>
+
 production:
   <<: *default
   host: <%= ENV['DB_PRODUCTION_IP'] %>
