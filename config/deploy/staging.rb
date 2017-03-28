@@ -13,6 +13,8 @@ set :branch, 'master'
 set :deploy_to, '/var/www/anychat/'
 server 'anychat.4me.tips', user: 'manhdv', roles: %w(app db web)
 
+set :nginx_config_name, 'anychat.4me.tips'
+
 # extra params for deployment
 set :deployer, 'manhdv'
 

@@ -87,5 +87,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Action cable config
   config.action_cable.url = ENV['CABLE_URL_PRD']
+  config.action_cable.allowed_request_origins = [ 'http://anychat.4me.tips' ]
 end
