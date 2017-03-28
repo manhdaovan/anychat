@@ -65,7 +65,7 @@ group :development do
   gem 'annotate'
 end
 
-group :production, :development do
+group :production, :staging, :development do
   gem 'redis', '~> 3.0'
   gem 'redis-rails', '~> 5'
   gem 'redis-store'
