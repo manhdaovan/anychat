@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     if @user.valid?
       user = User.find_by(username: @user.username)
       if user.nil? && @user.save
+        @user.create_qr_code
         store_user_info(@user)
         flash[:success] = 'Your account has been created! Welcome to your anychat!'
         redirect_back_or rooms_path

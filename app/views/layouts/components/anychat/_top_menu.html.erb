@@ -12,15 +12,17 @@
       </div>
     </div>
   </div>
-  <div class="col-4 my-account text-right">
-    <a onclick="showMyMenu()"><i class="fa fa-user">&nbsp;<%= current_user.username %></i></a>
-    <ul class="list-unstyled hide" id="my-account-menu">
-      <li><a data-toggle="modal" data-target="#current-user-profile-modal"><i class="fa fa-gears"></i>Setting</a></li>
-      <li><a href="<%= logout_home_index_path %>" data-method="delete">
-        <i class="fa fa-sign-out"></i>Sign out</a>
-      </li>
-    </ul>
-  </div>
+  <% if params[:controller] != 'home' %>
+    <div class="col-4 my-account text-right">
+      <a onclick="showMyMenu()"><i class="fa fa-user">&nbsp;<%= current_user.username %></i></a>
+      <ul class="list-unstyled hide" id="my-account-menu">
+        <li><a data-toggle="modal" data-target="#current-user-profile-modal"><i class="fa fa-gears"></i>Setting</a></li>
+        <li><a href="<%= logout_home_index_path %>" data-method="delete">
+          <i class="fa fa-sign-out"></i>Sign out</a>
+        </li>
+      </ul>
+    </div>
+  <% end %>
 </div>
 
 <!-- Current User Profile Modal -->
@@ -52,8 +54,18 @@
           </div>
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
-              <%= f.text_field :email, placeholder: 'Not set', class: 'form-control' %>
+              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+              <%= f.text_field :email, placeholder: 'Email - Not set', class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="text-center">
+              <img class="qr-code" src="<%= current_user.qr_code_url %>"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="text-center">
+              <a class="profile-url" href="<%= current_user.profile_url %>"><%= current_user.profile_url %></a>
             </div>
           </div>
         </div>

@@ -13,12 +13,14 @@ end
 }
 <% if fetch(:nginx_use_ssl) %>
 server {
+  server_tokens off;
   listen 80;
   rewrite ^(.*) https://$host$1 permanent;
 }
 <% end %>
 
 server {
+server_tokens off;
 <% if fetch(:nginx_use_ssl) %>
   listen 443;
   ssl on;
@@ -50,6 +52,12 @@ server {
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
+
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_redirect off;
   }
 
 
@@ -67,6 +75,12 @@ server {
   }
 
   location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  location ^~ /system/ {
     gzip_static on;
     expires max;
     add_header Cache-Control public;
