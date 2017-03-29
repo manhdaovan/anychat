@@ -100,4 +100,4 @@ Rails.application.configure do
   config.action_mailer.default_options = { from: 'Anychat<noreply@anychat.4me.tips>' }
 end
 
-Rails.application.routes.default_url_options = {host: 'anychat.4me.tips', schema: 'https'}
+Rails.application.routes.default_url_options[:host] = 'anychat.4me.tips'
