@@ -8,7 +8,12 @@ class MessagesController < ApplicationController
 
   def create
     @msg = Message.new(create_message_params)
+    @msg.errors.add(:from_user, 'invalid') if create_message_params.fetch(:username, nil) != current_user.username
     return unless @msg.valid?
+
+    # Mark user online again when user idles over 90 minutes then comes back
+    write_user2cache(current_user.username, current_user.id) unless online?(session[:username])
+
     @receiver_online = online?(@msg.to_user)
     if @receiver_online
       ActionCable.server.broadcast(One2OneChannel.channel_key_name(@msg.to_user),

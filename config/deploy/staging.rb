@@ -14,6 +14,8 @@ set :deploy_to, '/var/www/anychat/'
 server 'anychat.4me.tips', user: 'manhdv', roles: %w(app db web)
 
 set :nginx_config_name, 'anychat.4me.tips'
+set :nginx_server_name, 'anychat.4me.tips'
+set :nginx_use_ssl, true
 
 # extra params for deployment
 set :deployer, 'manhdv'

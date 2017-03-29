@@ -17,7 +17,7 @@ App.cable.subscriptions.create("AppearanceChannel", {
     },
     received: function (data) {
         if (data['username'] != getCurrentUser() && this.isRecentOnlineOrOffline(this, data['username'], data["type"])) {
-            toastr.info(data['username'] + ' ' + data['type']);
+            toastr.info(data['username'] + ' ' + data['type'], '', {timeOut: 3000});
         }
     }
 });

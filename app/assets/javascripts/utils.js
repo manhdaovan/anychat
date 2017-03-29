@@ -1,3 +1,7 @@
+// Global setting for toastr
+toastr.options.closeButton = true;
+toastr.options.timeOut = 30 * 1000;
+
 Object.size = function(obj){
     var size = 0, key;
     for (key in obj) {
@@ -6,7 +10,6 @@ Object.size = function(obj){
     return size;
 };
 
-toastr.options.closeButton = true;
 $.fn.loading = function(show) {
     if(show){
         console.log('show loading');
