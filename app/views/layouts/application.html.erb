@@ -7,12 +7,45 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Anychat</title>
+  <!-- Other meta tags -->
+  <meta name="description" content="Anychat - Private communication with no phone, email, social account required.">
+  <meta name="robots" content="index,follow,noodp">
+  <meta name="googlebot" content="index,follow">
+  <meta name="google" content="notranslate">
+  <meta name="subject" content="Anychat, private chatting, communication, private communication, chat tool, web chat">
+  <meta name="rating" content="General">
+  <link rel="me" href="https://github.com/manhdaovan/" type="text/html">
+
+  <meta property="og:locale" content="en_EN"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Anychat - Private communication with no phone, email, social account required.">
+  <meta property="og:image" content="<%= image_url('apple-touch-icon.png') %>">
+  <meta property="og:description" content="Easy to chat with other guys without any personal information required or installed app. Scan logo to try now!"/>
+  <meta property="og:url" content="https://anychat.4me.tips"/>
+  <meta property="og:site_name" content="Anychat"/>
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@anychat_4me">
+  <meta name="twitter:creator" content="@anychat_4me">
+  <meta name="twitter:url" content="https://anychat.4me.tips">
+  <meta name="twitter:title" content="Anychat - Private communication with no phone, email, social account required.">
+  <meta name="twitter:description" content="Easy to chat with other guys without any personal information required or installed app. Scan logo to try now!"/>
+  <meta name="twitter:image" content="<%= image_url('apple-touch-icon.png') %>">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Anychat">
+  <link rel="apple-touch-icon" href="<%= image_path('apple-touch-icon.png') %>">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <!-- ./Other meta tags -->
+
+  <title>Anychat - <%= yield(:title) %></title>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'true' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'true' %>
   <% flash.each do |key, value| %>
     <script type="text/javascript">
       $(document).ready(function () {
