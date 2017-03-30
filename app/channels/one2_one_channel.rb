@@ -1,7 +1,7 @@
 class One2OneChannel < ApplicationCable::Channel
-  ONE2ONE_CHANNEL_NAME = 'ONE2ONE_%s'
+  ONE2ONE_CHANNEL_NAME = 'ONE2ONE_%s'.freeze
   def subscribed
-    puts "One2OneChannel#subscribed"
+    puts 'One2OneChannel#subscribed'
     stream_from One2OneChannel.channel_key_name(current_user)
   end
 
