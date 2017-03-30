@@ -2,13 +2,15 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string(100)      not null
-#  password_digest :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  last_logged_in  :datetime
-#  email           :string(255)      default("")
+#  id                  :integer          not null, primary key
+#  username            :string(100)      not null
+#  password_digest     :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  last_logged_in      :datetime
+#  email               :string(255)      default("")
+#  active_email_digest :string(255)      default("")
+#  receive_msg_offline :boolean          default(FALSE)
 #
 
 class User < ApplicationRecord
@@ -17,23 +19,23 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :username, presence: true,
-            length:              {minimum: 6, maximum: 50},
-            format:              {with: USERNAME_REGEX}, on: :create
+                       length:              { minimum: 6, maximum: 50 },
+                       format:              { with: USERNAME_REGEX }, on: :create
   validates :password, presence: true,
-            length:              {minimum: 8, maximum: 50}, on: :create
-  validates :email, format: {with: EMAIL_REGEX},
-            length:         {maximum: 255}, allow_blank: true
+                       length:              { minimum: 8, maximum: 50 }, on: :create
+  validates :email, format: { with: EMAIL_REGEX },
+                    length:         { maximum: 255 }, allow_blank: true
 
   def create_qr_code
     require 'rqrcode'
     Dir.mkdir("#{Rails.root}/public/system/#{id}")
     qrcode = RQRCode::QRCode.new(profile_url)
-    image  = qrcode.as_png(
+    qrcode.as_png(
       resize_gte_to:     false,
       resize_exactly_to: false,
       fill:              'white',
       color:             'black',
-      size:              200,
+      size:              160,
       border_modules:    4,
       module_px_size:    6,
       file:              "#{Rails.root}/public/system/#{id}/#{username}.png"
@@ -48,5 +50,34 @@ class User < ApplicationRecord
 
   def profile_url
     "#{Rails.application.routes.url_helpers.rooms_url}/#{username}"
+  end
+
+  def new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def gen_active_email_digest(token)
+    self.active_email_digest = new_digest(token)
+  end
+
+  def valid_active_email_token?(token)
+    return false if self.active_email_digest.blank?
+    BCrypt::Password.new(self.active_email_digest).is_password?(token)
+  end
+
+  def clear_active_email_digest
+    self.active_email_digest = ''
+    save
+  end
+
+  def receive_offline_msg?
+    self.receive_msg_offline && self.active_email_digest.blank?
+  end
+
+  private
+
+  def new_digest(token)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(token, cost: cost)
   end
 end

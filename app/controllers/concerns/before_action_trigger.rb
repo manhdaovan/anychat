@@ -1,7 +1,6 @@
 module BeforeActionTrigger
   extend ActiveSupport::Concern
   included do
-
     def require_login
       store_user_info(session[:username]) && return unless session[:username].nil?
       if request.xhr?

@@ -32,7 +32,7 @@ Rails.application.configure do
                                                               :expires_in => 90.minutes}
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -63,6 +63,7 @@ Rails.application.configure do
   config.web_console.whitelisted_ips = '192.168.1.1/24'
 
   config.action_controller.default_url_options = {host: 'localhost:3000', protocol: 'http'}
+  config.action_mailer.default_url_options     = {host: 'localhost:3000', protocol: 'http'}
   config.action_mailer.default_options         = {from: 'Anychat<noreply@anychat.4me.tips>'}
   config.action_mailer.delivery_method         = :letter_opener
   # Rewrite mail preview routes from rspec

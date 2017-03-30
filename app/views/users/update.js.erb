@@ -1,9 +1,13 @@
-<% if current_user.errors.blank? %>
-toastr.info('Update user email success! Confirmation email will be sent to you soon.');
+<% if @user.errors.blank? %>
+var successMsg = 'Update user info success!';
+<% if @email_changed %>
+successMsg += ' Confirmation email will be sent to you soon.';
+<% end %>
+toastr.info(successMsg);
 $('#current-user-profile-modal').modal('hide');
 <% else %>
 var errorMsg = '';
-<% current_user.errors.full_messages.each do |msg| %>
+<% @user.errors.full_messages.each do |msg| %>
 errorMsg += '<%= msg %>\n';
 <% end %>
 toastr.error(errorMsg);

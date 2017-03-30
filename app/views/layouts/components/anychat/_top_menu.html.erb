@@ -57,6 +57,12 @@
               <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
               <%= f.text_field :email, placeholder: 'Email - Not set', class: 'form-control' %>
             </div>
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :receive_msg_offline %>
+                Receive first message from other guy when offline.
+              </label>
+            </div>
           </div>
           <div class="form-group">
             <div class="text-center">
