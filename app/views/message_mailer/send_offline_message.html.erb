@@ -1,9 +1,11 @@
 <% content_for(:title, "Offline message from #{@from_user.username}") %>
 
-<p>Hi <b><%= @msg.to_user %></b>,</p>
-<p><b><%= @msg.from_user %></b> just send you a message: </p>
-<p><%= @msg.msg_content %></p>
-<p><b><%= @msg.from_user %></b>
+<p>Hi <b><%= @to_user.username %></b>,</p>
+<p><b><%= @from_user.username %></b> just send you a message from <%= link_to "Anychat", root_url %>: </p>
+<blockquote>
+  <p><%= @msg_content %></p>
+</blockquote>
+<p><b><%= @from_user.username %></b>
   only sends you first message within 24 hours when you offline,
   so he seems hoping you online and replies to him soon.
 </p>
@@ -15,7 +17,7 @@
         <tbody>
         <tr>
           <td>
-            <%= link_to "Go to room and chat with him", rooms_url(username: @msg.from_user) %>
+            <%= link_to "Go to room and chat with him", rooms_url(username: @from_user.username) %>
           </td>
         </tr>
         </tbody>

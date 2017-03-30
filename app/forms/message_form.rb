@@ -1,4 +1,4 @@
-class Message
+class MessageForm
   include ActiveModel::Model
   attr_accessor :from_user, :to_user, :msg_content
 

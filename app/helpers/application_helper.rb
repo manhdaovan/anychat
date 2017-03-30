@@ -61,4 +61,8 @@ module ApplicationHelper
     max_quota = ENV['MAILGUN_QUOTA'].to_i
     current_number_mails < max_quota - 500 # buffer 500
   end
+
+  def fetch_user_instance(username)
+    User.find_by(username: username)
+  end
 end
