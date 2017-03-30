@@ -32,4 +32,33 @@ module ApplicationHelper
     cookies.delete(:username)
     Rails.cache.delete(username) if username
   end
+
+  def mail_quota_key
+    "mail-quota-#{Time.current.year}-#{Time.current.month}"
+  end
+
+  def mail_alert_over_key
+    "mail-over-#{Time.current.year}-#{Time.current.month}"
+  end
+
+  def update_number_emails
+    Rails.cache.write(mail_quota_key, current_number_mails + 1)
+  end
+
+  def sent_alert_over_email?
+    Rails.cache.read(mail_alert_over_key).present?
+  end
+
+  def mark_send_alert_over
+    Rails.cache.write(mail_alert_over_key, Time.zone.now)
+  end
+
+  def current_number_mails
+    Rails.cache.read(mail_quota_key).to_i
+  end
+
+  def under_mail_quota
+    max_quota = ENV['MAILGUN_QUOTA'].to_i
+    current_number_mails < max_quota - 500 # buffer 500
+  end
 end

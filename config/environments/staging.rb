@@ -98,6 +98,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'anychat.4me.tips', protocol: 'https' }
   config.action_mailer.default_options = { from: 'Anychat<noreply@anychat.4me.tips>' }
+  config.action_mailer.asset_host = 'https://anychat.4me.tips'
 end
 
 Rails.application.routes.default_url_options = {host: 'anychat.4me.tips', protocol: 'https'}

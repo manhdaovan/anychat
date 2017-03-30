@@ -5,6 +5,7 @@ unless Rails.env.development?
     domain:               ENV['ANYCHAT_DOMAIN'],
     address:              ENV['MAILGUN_HOST'],
     port:                 587,
-    authentication:       :plain
+    authentication:       :plain,
+    enable_starttls_auto: true
   }
 end

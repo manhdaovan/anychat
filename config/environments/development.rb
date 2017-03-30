@@ -59,13 +59,14 @@ Rails.application.configure do
   config.file_watcher                  = ActiveSupport::EventedFileUpdateChecker
 
   config.action_cable.url = ENV['CABLE_URL_DEV']
-
   config.web_console.whitelisted_ips = '192.168.1.1/24'
 
   config.action_controller.default_url_options = {host: 'localhost:3000', protocol: 'http'}
+
   config.action_mailer.default_url_options     = {host: 'localhost:3000', protocol: 'http'}
   config.action_mailer.default_options         = {from: 'Anychat<noreply@anychat.4me.tips>'}
   config.action_mailer.delivery_method         = :letter_opener
+  config.action_mailer.asset_host = 'http://localhost:3000'
   # Rewrite mail preview routes from rspec
   config.action_mailer.preview_path            = "#{Rails.root}/spec/mailers/previews"
 end

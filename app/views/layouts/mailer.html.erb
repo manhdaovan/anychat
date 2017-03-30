@@ -1,13 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+<head>
+  <meta name="viewport" content="width=device-width"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title><%= yield(:title) || 'Message from anychat.4me.tips' %></title>
+  <%= render 'layouts/components/mailer/style' %>
+</head>
+<body class="">
+<table border="0" cellpadding="0" cellspacing="0" class="body">
+  <tr>
+    <td>&nbsp;</td>
+    <td class="container">
+      <div class="content">
 
-  <body>
-    <%= yield %>
-  </body>
+        <!-- START CENTERED WHITE CONTAINER -->
+        <span class="preheader"><%= yield(:title) || 'Message from anychat.4me.tips' %></span>
+        <table class="main">
+
+          <!-- START MAIN CONTENT AREA -->
+          <tr>
+            <td class="wrapper">
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <%= yield %>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- END MAIN CONTENT AREA -->
+        </table>
+
+        <!-- START FOOTER -->
+        <div class="footer">
+          <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="content-block">
+                <a href="<%= root_url %>" title="Anychat"><img src="<%= image_url('anychat_qrcode.jpg') %>" width="150" height="150"/></a>
+              </td>
+            </tr>
+            <tr>
+              <td class="content-block">
+                <span class="apple-link">
+                  <a href="<%= root_url %>" title="Anychat">Anychat - Simple private communication</a>
+                </span>
+                <br> Support me at <a href="https://github.com/manhdaovan/anychat" title="Github">Github</a>.
+              </td>
+            </tr>
+            <tr>
+              <td class="content-block powered-by">
+                Powered by <a href="<%= root_url %>" title="Anychat">Anychat</a>.
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- END FOOTER -->
+
+        <!-- END CENTERED WHITE CONTAINER --></div>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
 </html>

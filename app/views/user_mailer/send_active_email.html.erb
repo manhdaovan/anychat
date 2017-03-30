@@ -1,1 +1,24 @@
-<%= link_to "Active Email", active_email_url(token: @active_token) %>
+<% content_for(:title, 'Active Email') %>
+
+<p>Hi <b><%= @user.username %></b>,</p>
+<p>Sometimes you just want to receive the first and only first message from other guys
+  via email when you offline, you need confirming this email is yours first.</p>
+<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+  <tbody>
+  <tr>
+    <td align="left">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr>
+          <td>
+            <%= link_to "Active Email", active_email_url(token: @active_token) %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p>You can disable/enable receiving the message when offline by setting your profile.</p>
+<p>Hope you feeling safe with <a href="<%= root_url %>" title="Anychat">Anychat</a></p>

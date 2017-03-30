@@ -1,0 +1,28 @@
+<% content_for(:title, "Offline message from #{@from_user.username}") %>
+
+<p>Hi <b><%= @msg.to_user %></b>,</p>
+<p><b><%= @msg.from_user %></b> just send you a message: </p>
+<p><%= @msg.msg_content %></p>
+<p><b><%= @msg.from_user %></b>
+  only sends you first message within 24 hours when you offline,
+  so he seems hoping you online and replies to him soon.
+</p>
+<table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+  <tbody>
+  <tr>
+    <td align="left">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+        <tr>
+          <td>
+            <%= link_to "Go to room and chat with him", rooms_url(username: @msg.from_user) %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p>You can disable/enable receiving message when offline by setting your profile.</p>
+<p>Hope you feeling safe with <a href="<%= root_url %>" title="Anychat">Anychat</a></p>

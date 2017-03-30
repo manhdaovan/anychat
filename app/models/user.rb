@@ -71,7 +71,7 @@ class User < ApplicationRecord
   end
 
   def receive_offline_msg?
-    self.receive_msg_offline && self.active_email_digest.blank?
+    self.receive_msg_offline && self.email.present? && self.active_email_digest.blank?
   end
 
   private
