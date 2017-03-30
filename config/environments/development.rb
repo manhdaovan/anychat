@@ -62,11 +62,11 @@ Rails.application.configure do
 
   config.web_console.whitelisted_ips = '192.168.1.1/24'
 
-  config.action_controller.default_url_options = {host: 'localhost:3000'}
+  config.action_controller.default_url_options = {host: 'localhost:3000', protocol: 'http'}
   config.action_mailer.default_options         = {from: 'Anychat<noreply@anychat.4me.tips>'}
   config.action_mailer.delivery_method         = :letter_opener
   # Rewrite mail preview routes from rspec
   config.action_mailer.preview_path            = "#{Rails.root}/spec/mailers/previews"
 end
 
-Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+Rails.application.routes.default_url_options = {host: 'localhost:3000', protocol: 'http'}

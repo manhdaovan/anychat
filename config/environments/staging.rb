@@ -93,11 +93,11 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = [ 'http://anychat.4me.tips' ]
 
   # default host for controllers
-  config.action_controller.default_url_options = { host: 'anychat.4me.tips', schema: 'https' }
+  config.action_controller.default_url_options = { host: 'anychat.4me.tips', protocol: 'https' }
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'anychat.4me.tips' }
+  config.action_mailer.default_url_options = { host: 'anychat.4me.tips', protocol: 'https' }
   config.action_mailer.default_options = { from: 'Anychat<noreply@anychat.4me.tips>' }
 end
 
-Rails.application.routes.default_url_options[:host] = 'anychat.4me.tips'
+Rails.application.routes.default_url_options = {host: 'anychat.4me.tips', protocol: 'https'}

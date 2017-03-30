@@ -33,7 +33,7 @@ class User < ApplicationRecord
       resize_exactly_to: false,
       fill:              'white',
       color:             'black',
-      size:              120,
+      size:              200,
       border_modules:    4,
       module_px_size:    6,
       file:              "#{Rails.root}/public/system/#{id}/#{username}.png"
