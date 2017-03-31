@@ -13,18 +13,33 @@
             <div class="well">
               <%= form_for @user, url: login_home_index_path, method: :post do |f| %>
                 <div class="form-group">
+                  <div class="row">
+                    <div class="radio col-md-6 col-12">
+                      <label>
+                        <%= f.radio_button :is_new, 0, checked: true %>
+                        I am a returning user.
+                      </label>
+                    </div>
+                    <div class="radio col-md-6 col-12">
+                      <label>
+                        <%= f.radio_button :is_new, 1 %>
+                        I am a new user.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="username" class="control-label"><span class="text-danger">※</span> 6 <= username.length <= 50</label>
 
-                  <div class="notice">Pick any [a-zA-Z0-9] nickname!</div>
+                  <div class="notice hide">Pick any [a-zA-Z0-9] nickname!</div>
                   <%= f.text_field :username, class: 'form-control',
                                    title:            'Please enter your username',
                                    placeholder:      'Username' %>
-                  <span class="help-block"></span>
                 </div>
                 <div class="form-group">
                   <label for="password" class="control-label"><span class="text-danger">※</span> 8 <= password.length <= 50</label>
 
-                  <div class="notice">Pls
+                  <div class="notice hide">Pls
                     <span class="text-danger">REMEMBER</span>
                     this. We have <span class="text-danger">NO RECOVERY</span>
                     password mode!
@@ -32,25 +47,13 @@
                   <%= f.text_field :password, type: 'password', class: 'form-control',
                                    placeholder:     'Password',
                                    title:           'Please enter your password' %>
-                  <span class="help-block"></span>
                 </div>
-                <div class="form-group">
-                  <div class="notice"><span class="text-danger">※</span> Confirmation password</div>
+                <div class="form-group hide" id="input-confirm-password">
+                  <div class="notice hide"><span class="text-danger">※</span> Confirmation password</div>
                   <%= f.text_field :password_confirmation, type: 'password', class: 'form-control',
                                    placeholder:     'Confirmation password',
                                    title:           'Please enter your password again' %>
-                  <span class="help-block"></span>
                 </div>
-
-                <!-- <div class="form-group">
-                  <label for="Email" class="control-label">Email (Optional)</label>
-
-                  <div class="notice">The first and only first message will be sent to this email when you offline.</div>
-                  <%= f.text_field :email, class: 'form-control',
-                                   placeholder:     'Email will be used when you offline.',
-                                   title:           'Email will be used when you offline.' %>
-                  <span class="help-block"></span>
-                </div> -->
 
                 <%= render 'shared/error_explain', obj: @user %>
 
@@ -79,6 +82,13 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
+<script type="text/javascript">
+  $('input[name="user[is_new]"]').click(function(){
+    $('#input-confirm-password, .notice').toggleClass('hide');
+  });
+  <% if @user.type_register? %>
+  $('#user_is_new_1').trigger('click');
+  <% end %>
+</script>

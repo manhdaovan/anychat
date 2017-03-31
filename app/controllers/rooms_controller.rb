@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   include BeforeActionTrigger
-  before_action :require_login, :store_next_url
+  before_action :store_next_url, :require_login
 
   def index
     @q = User.ransack(params[:q])

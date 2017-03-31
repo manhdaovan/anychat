@@ -18,9 +18,14 @@ class User < ApplicationRecord
   EMAIL_REGEX    = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   has_secure_password
 
+  attr_accessor :is_new
+  attr_reader :username_or_password
+
   validates :username, presence: true,
                        length:              { minimum: 6, maximum: 50 },
-                       format:              { with: USERNAME_REGEX }, on: :create
+                       format:              { with: USERNAME_REGEX },
+                       uniqueness: true,
+                       on: :create
   validates :password, presence: true,
                        length:              { minimum: 8, maximum: 50 }, on: :create
   validates :email, format: { with: EMAIL_REGEX },
@@ -28,7 +33,8 @@ class User < ApplicationRecord
 
   def create_qr_code
     require 'rqrcode'
-    Dir.mkdir("#{Rails.root}/public/system/#{id}")
+    dir = "#{Rails.root}/public/system/#{id}"
+    Dir.mkdir(dir) unless File.directory?(dir)
     qrcode = RQRCode::QRCode.new(profile_url)
     qrcode.as_png(
       resize_gte_to:     false,
@@ -72,6 +78,10 @@ class User < ApplicationRecord
 
   def receive_offline_msg?
     self.receive_msg_offline && self.email.present? && self.active_email_digest.blank?
+  end
+
+  def type_register?
+    is_new.to_i == 1
   end
 
   private
