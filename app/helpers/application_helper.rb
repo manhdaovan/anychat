@@ -62,6 +62,18 @@ module ApplicationHelper
     current_number_mails < max_quota - 1000 # buffer 500
   end
 
+  def sent_offline_key(from_user, to_user)
+    "sent-offline-#{from_user.username}-#{to_user.username}"
+  end
+
+  def not_send_first_offline_msg(from_user, to_user)
+    Rails.cache.read(sent_offline_key(from_user, to_user)).blank?
+  end
+
+  def mark_sent_first_offline_msg(from_user, to_user)
+    Rails.cache.write(sent_offline_key(from_user, to_user), Time.zone.now)
+  end
+
   def fetch_user_instance(username)
     User.find_by(username: username)
   end

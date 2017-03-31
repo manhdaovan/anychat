@@ -27,9 +27,10 @@ class MessagesController < ApplicationController
 
   def send_offline_msg(from_user, to_user, msg)
     if under_mail_quota
-      if to_user.receive_offline_msg?
+      if to_user.receive_offline_msg? && not_send_first_offline_msg(from_user, to_user)
         MessageMailer.send_offline_message(from_user, to_user, msg).deliver_later
         update_number_emails
+        mark_sent_first_offline_msg(from_user, to_user)
       end
     else
       unless sent_alert_over_email?
