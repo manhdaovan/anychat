@@ -83,10 +83,16 @@ function buildMessageItem(isMyMessage, message) {
 
 function addMessageItemToBox(from_user, to_user, messageItem) {
     var box = getMessageBox(from_user, to_user);
-    box.find('.anychat-message-box-item').append(messageItem);
+    if(box.length == 0) return;
+    var boxChat = box.find('.anychat-message-box-item').append(messageItem);
+    scrollEleToBottom(box.find('.anychat-message-boxes'));
 }
 
 function clearMsgInput(from_user, to_user){
     var box = getMessageBox(from_user, to_user);
     box.find('textarea[name="message[msg_content]"]').val('');
+}
+
+function scrollEleToBottom(ele){
+    ele.scrollTop(ele[0].scrollHeight);
 }

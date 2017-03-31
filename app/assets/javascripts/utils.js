@@ -1,6 +1,7 @@
 // Global setting for toastr
 toastr.options.closeButton = true;
 toastr.options.timeOut = 30 * 1000;
+toastr.options.escapeHtml = true;
 
 Object.size = function(obj){
     var size = 0, key;

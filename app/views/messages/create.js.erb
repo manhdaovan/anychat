@@ -9,7 +9,7 @@
 // Add message to box
 addMessageItemToBox('<%= @msg.from_user%>', '<%= @msg.to_user %>',
   buildMessageItem(<%= @msg.from_user == current_user.username%>,
-    '<%= @msg.msg_content %>'));
+    '<%= j(@msg.msg_content) %>'));
 // Clear input text
 clearMsgInput('<%= @msg.from_user%>', '<%= @msg.to_user %>');
 <% else %>
