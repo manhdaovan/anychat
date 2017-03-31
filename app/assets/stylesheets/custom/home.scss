@@ -16,6 +16,9 @@
   }
   #text-change-typed {
     color: dodgerblue;
+    @include screen-xs {
+      color: aliceblue;
+    }
   }
   .bg-credit-link{
     margin-top: -30px;
