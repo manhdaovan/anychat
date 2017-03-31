@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :rooms, only: [:index]
   resources :messages, only: [:create]
-  get 'rooms/:username', to: 'rooms#index', constraints: {username: /[a-zA-Z0-9]+/i}
+  get 'rooms/:username', to: 'rooms#index', constraints: { username: /[a-zA-Z0-9]+/i }
   resources :users, only: [:edit, :update]
   get 'users/active_email', to: 'users#active_email', as: :active_email
 

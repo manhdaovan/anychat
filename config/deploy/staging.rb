@@ -20,7 +20,6 @@ set :nginx_use_ssl, true
 # extra params for deployment
 set :deployer, 'manhdv'
 
-
 # role-based syntax
 # ==================
 
@@ -33,7 +32,6 @@ set :deployer, 'manhdv'
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -41,7 +39,6 @@ set :deployer, 'manhdv'
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
 
 # Custom SSH Options
 # ==================
@@ -58,11 +55,9 @@ set :deployer, 'manhdv'
 #  }
 #
 
-set :ssh_options, {
-                  keys:          %w(~/.ssh/id_rsa),
+set :ssh_options, keys:          %w(~/.ssh/id_rsa),
                   forward_agent: true,
                   auth_methods:  %w(publickey)
-                }
 
 # The server-based syntax can be used to override options:
 # ------------------------------------

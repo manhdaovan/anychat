@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @users = @q.result.page(params.fetch(:page, 1)).per(15)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @user            = current_user
@@ -29,7 +28,7 @@ class UsersController < ApplicationController
 
   def check_online
     username = params.fetch(:username, '')
-    render json: {online: online?(username)}
+    render json: { online: online?(username) }
   end
 
   def active_email

@@ -74,7 +74,7 @@ namespace :nginx do
   task :set_503 do
     on roles(:app) do
       within release_path do
-        puts "===== Enable 503 mode to nginx ====="
+        puts '===== Enable 503 mode to nginx ====='
         execute :touch, 'tmp/maintenance.txt'
       end
     end
@@ -84,7 +84,7 @@ namespace :nginx do
   task :unset_503 do
     on roles(:app) do
       within release_path do
-        puts "===== Remove 503 mode to nginx ====="
+        puts '===== Remove 503 mode to nginx ====='
         execute :rm, '-f tmp/maintenance.txt'
       end
     end

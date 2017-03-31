@@ -66,7 +66,7 @@
   <% if params[:controller] == 'home' %>
     <%= render 'layouts/components/home/header' %>
   <% end %>
-  <div class="margin-top-30">
+  <div class="<%= params[:controller] == 'home' ? 'margin-top-30' : '' %>">
     <%= yield %>
   </div>
   <%= render 'layouts/components/home/footer' %>

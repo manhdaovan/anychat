@@ -11,6 +11,5 @@ FactoryGirl.define do
     trait :receive_message_offline do
       receive_msg_offline false
     end
-
   end
 end

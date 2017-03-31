@@ -25,11 +25,11 @@ Rails.application.configure do
   #
   #   config.cache_store = :null_store
   # end
-  config.cache_store                         = :redis_store, {:host       => "localhost",
-                                                              :port       => 6379,
-                                                              :db         => 0,
-                                                              :namespace  => "users",
-                                                              :expires_in => 90.minutes}
+  config.cache_store                         = :redis_store, { host: 'localhost',
+                                                               port: 6379,
+                                                               db: 0,
+                                                               namespace: 'users',
+                                                               expires_in: 90.minutes }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
@@ -61,14 +61,14 @@ Rails.application.configure do
   config.action_cable.url = ENV['CABLE_URL_DEV']
   config.web_console.whitelisted_ips = '192.168.1.1/24'
 
-  config.action_controller.default_url_options = {host: 'localhost:3000', protocol: 'http'}
+  config.action_controller.default_url_options = { host: 'localhost:3000', protocol: 'http' }
 
-  config.action_mailer.default_url_options     = {host: 'localhost:3000', protocol: 'http'}
-  config.action_mailer.default_options         = {from: 'Anychat<noreply@anychat.4me.tips>'}
+  config.action_mailer.default_url_options     = { host: 'localhost:3000', protocol: 'http' }
+  config.action_mailer.default_options         = { from: 'Anychat<noreply@anychat.4me.tips>' }
   config.action_mailer.delivery_method         = :letter_opener
   config.action_mailer.asset_host = 'http://localhost:3000'
   # Rewrite mail preview routes from rspec
-  config.action_mailer.preview_path            = "#{Rails.root}/spec/mailers/previews"
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 end
 
-Rails.application.routes.default_url_options = {host: 'localhost:3000', protocol: 'http'}
+Rails.application.routes.default_url_options = { host: 'localhost:3000', protocol: 'http' }

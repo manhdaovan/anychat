@@ -11,7 +11,7 @@ module Anychat
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.time_zone      = 'Tokyo'
+    config.time_zone = 'Tokyo'
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     config.generators do |g|
@@ -25,11 +25,8 @@ module Anychat
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
 
-    unless Rails.env.test?
-      config.middleware.use Rack::Attack
-    end
+    config.middleware.use Rack::Attack unless Rails.env.test?
 
     config.action_cable.mount_path = '/chat'
-
   end
 end

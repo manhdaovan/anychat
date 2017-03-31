@@ -67,8 +67,8 @@ class User < ApplicationRecord
   end
 
   def valid_active_email_token?(token)
-    return false if self.active_email_digest.blank?
-    BCrypt::Password.new(self.active_email_digest).is_password?(token)
+    return false if active_email_digest.blank?
+    BCrypt::Password.new(active_email_digest).is_password?(token)
   end
 
   def clear_active_email_digest
@@ -77,7 +77,7 @@ class User < ApplicationRecord
   end
 
   def receive_offline_msg?
-    self.receive_msg_offline && self.email.present? && self.active_email_digest.blank?
+    receive_msg_offline && email.present? && active_email_digest.blank?
   end
 
   def type_register?
