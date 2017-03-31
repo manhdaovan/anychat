@@ -21,7 +21,10 @@ class UsersController < ApplicationController
     @user.gen_active_email_digest(token) if @email_changed
     return unless @user.save
 
-    UserMailer.send_active_email(@user, token).deliver_later if @email_changed
+    if @email_changed
+      UserMailer.send_active_email(@user, token).deliver_later
+      update_number_emails
+    end
   end
 
   def check_online

@@ -35,6 +35,7 @@ class MessagesController < ApplicationController
       unless sent_alert_over_email?
         SystemMailer.send_alert_over_mail_quota(current_number_mails).deliver_now
         mark_send_alert_over
+        update_number_emails
       end
     end
   end
