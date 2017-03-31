@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
-  describe 'POST /login' do
+  describe 'POST #login' do
     context 'with new user option and no existing user' do
       it 'create user success with valid info' do
         post 'login', params: {user: {username:              'testuser',
