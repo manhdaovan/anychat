@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def logout_user
-    current_user.update(last_logged_in: Time.zone.now) if current_user
+    current_user.update(last_logged_in: Time.zone.now.to_s) if current_user
     username = session.delete(:username)
     cookies.delete(:username)
     Rails.cache.delete(username) if username
@@ -53,7 +53,7 @@ module ApplicationHelper
 
   def mark_send_alert_over
     Rails.cache.write(mail_alert_over_key,
-                      Time.zone.now,
+                      Time.zone.now.to_s,
                       expires_in: 1.month)
   end
 
@@ -76,7 +76,7 @@ module ApplicationHelper
 
   def mark_sent_first_offline_msg(from_user, to_user)
     Rails.cache.write(sent_offline_key(from_user, to_user),
-                      Time.zone.now,
+                      Time.zone.now.to_s,
                       expires_in: 24.hours)
   end
 
