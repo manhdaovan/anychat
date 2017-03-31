@@ -42,7 +42,9 @@ module ApplicationHelper
   end
 
   def update_number_emails
-    Rails.cache.write(mail_quota_key, current_number_mails + 1)
+    Rails.cache.write(mail_quota_key,
+                      current_number_mails + 1,
+                      expires_in: 1.month)
   end
 
   def sent_alert_over_email?
@@ -50,7 +52,9 @@ module ApplicationHelper
   end
 
   def mark_send_alert_over
-    Rails.cache.write(mail_alert_over_key, Time.zone.now)
+    Rails.cache.write(mail_alert_over_key,
+                      Time.zone.now,
+                      expires_in: 1.month)
   end
 
   def current_number_mails
@@ -71,7 +75,9 @@ module ApplicationHelper
   end
 
   def mark_sent_first_offline_msg(from_user, to_user)
-    Rails.cache.write(sent_offline_key(from_user, to_user), Time.zone.now)
+    Rails.cache.write(sent_offline_key(from_user, to_user),
+                      Time.zone.now,
+                      expires_in: 24.hours)
   end
 
   def fetch_user_instance(username)
