@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'letter_opener'
   gem 'premailer-rails'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
@@ -79,6 +80,8 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
