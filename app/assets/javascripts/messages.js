@@ -99,7 +99,7 @@ function buildMessageItem(isMyMessage, message) {
 function addMessageItemToBox(from_user, to_user, messageItem) {
     var box = getMessageBox(from_user, to_user);
     if (box.length == 0) return;
-    var boxChat = box.find('.anychat-message-box-item').append(messageItem);
+    box.find('.anychat-message-box-item').append(messageItem);
     scrollEleToBottom(box.find('.anychat-message-boxes'));
 }
 

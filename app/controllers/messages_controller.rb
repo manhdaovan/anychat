@@ -3,13 +3,12 @@ class MessagesController < ApplicationController
   before_action :require_login, :store_next_url
 
   def create
-    puts "did here come here?1"
     @msg = MessageForm.new(create_message_params)
     if create_message_params.fetch(:username, nil) != current_user.username
       @msg.errors.add(:from_user, 'invalid')
     end
     return unless @msg.valid?
-    puts "did here come here?2"
+
     # Mark user online again when user idles over 90 minutes then comes back
     write_user2cache(current_user.username, current_user.id) unless online?(session[:username])
 
