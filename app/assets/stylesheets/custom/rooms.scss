@@ -238,4 +238,34 @@
       height: 45px;
     }
   }
+
+  #ul-my-notification{
+    position: fixed;
+    top: 30px;
+    right: 35%;
+    @include screen-md{
+      right: 25%;
+    }
+    @include screen-xs {
+      right: 10%;
+    }
+    max-width: 75%;
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 9;
+    background-color: #010028;
+    li {
+      border-bottom: 1px dotted gray;
+      color: white;
+      min-height: 45px;
+      max-height: 60px;
+      line-height: 45px;
+      @include screen-xs {
+        line-height: normal;
+      }
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
 }

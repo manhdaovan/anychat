@@ -11,7 +11,19 @@
         </div>
       </div>
     </div>
-    <div class="col-4 my-account text-right">
+    <div class="col-1 my-account">
+      <a id="a-notification-icon"><i class="fa fa-bell"></i></a>
+      <ul class="list-unstyled hide" id="ul-my-notification">
+        <li><span>Manhdv22222</span>:<span>Navigation anychat.4me.tips An...</span></li>
+        <li><span>Manhdv22222</span>:<span>Navigation anychat.4me.tips An...</span></li>
+        <li><span>Manhdv22222</span>:<span>Navigation anychat.4me.tips An...</span></li>
+        <li><span>Manhdv22222</span>:<span>Navigation anychat.4me.tips An...</span></li>
+        <li><span>Manhdv22222</span>:<span>Navigation anychat.4me.tips An...</span></li>
+        <li><span>Manhdv22222</span>:<span>Navigation anychat.4me.tips An...</span></li>
+        <li><span>Manhdv22222</span>:<span>Navigation anychat.4me.tips An...</span></li>
+      </ul>
+    </div>
+    <div class="col-3 my-account text-left">
       <a onclick="showMyMenu()"><i class="fa fa-user">&nbsp;<%= current_user.username %></i></a>
       <ul class="list-unstyled hide" id="my-account-menu">
         <li><a data-toggle="modal" data-target="#current-user-profile-modal"><i class="fa fa-gears"></i>Setting</a></li>
@@ -86,4 +98,7 @@
   function showMyMenu() {
     topMenu.toggleClass('hide');
   }
+  $('#a-notification-icon').click(function(){
+    $('#ul-my-notification').toggleClass('hide');
+  });
 </script>
