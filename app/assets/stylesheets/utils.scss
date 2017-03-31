@@ -47,6 +47,12 @@ body {
   }
 }
 
+@each $prop in gray, red, yellow, blue, green, black, white {
+  .text-#{$prop}{
+    color: #{$prop};
+  }
+}
+
 a {
   color: #5bc0de !important;
   cursor: pointer;

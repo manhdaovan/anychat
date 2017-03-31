@@ -4,5 +4,5 @@ class MessageForm
 
   validates :from_user, :to_user, :msg_content, presence: true
   validates :from_user, :to_user, format: { with: User::USERNAME_REGEX }
-  validates :msg_content, length: { maximum: 1000 }
+  validates :msg_content, length: { maximum: 255 }
 end

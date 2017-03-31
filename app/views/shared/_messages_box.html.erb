@@ -15,14 +15,17 @@
         <input type="hidden" name="message[from_user]" value="<%= current_user.username %>">
         <input type="hidden" name="message[to_user]" value="">
 
-        <div class="row">
+        <div class="row textarea-action">
           <div class="col-12">
           <textarea class="form-control auto-resize required"
                     rows="5" cols="5" data-name="Message content"
                     data-required-msg="Please input some content before sending to that guy!"
                     placeholder="Say something to that guy!" name="message[msg_content]"></textarea>
           </div>
-          <div class="col-12 text-right margin-top-20">
+          <div class="col-12 text-right">
+            <div class="text-gray">Chars: <span id="message-text-length" class="text-red">0</span> / 255</div>
+          </div>
+          <div class="col-12 text-right">
             <input type="submit" value="Send" class="btn btn-sm btn-success btn-submit"/>
           </div>
         </div>

@@ -8,7 +8,7 @@ $(document).on('click', '.list-user-item', function () {
         type: 'post',
         data: {username: $this.data('username')},
         success: function (data) {
-            if(data.online){
+            if (data.online) {
                 $('#user-' + $this.data('username')).addClass('text-info');
             }
             buildMessageBox($('input[name="current_username"]').val(), $this.data('username'), data);
@@ -20,6 +20,21 @@ $(document).on('click', '.list-user-item', function () {
             msgBox.loading(false);
         }
     });
+});
+
+$(document).on('keyup', 'textarea[name="message[msg_content]"]', function (e) {
+    var $this = $(this);
+    var box = $this.closest('.textarea-action');
+    var displaySpan = box.find('#message-text-length');
+    var textLen = $this.val().length;
+    var sendButton = box.find('input[type="submit"]');
+    if (textLen > 255) {
+        sendButton.attr('disabled', 'disabled');
+    } else {
+        sendButton.removeAttr('disabled');
+    }
+
+    displaySpan.html(textLen);
 });
 
 function getCurrentUser() {
@@ -83,16 +98,16 @@ function buildMessageItem(isMyMessage, message) {
 
 function addMessageItemToBox(from_user, to_user, messageItem) {
     var box = getMessageBox(from_user, to_user);
-    if(box.length == 0) return;
+    if (box.length == 0) return;
     var boxChat = box.find('.anychat-message-box-item').append(messageItem);
     scrollEleToBottom(box.find('.anychat-message-boxes'));
 }
 
-function clearMsgInput(from_user, to_user){
+function clearMsgInput(from_user, to_user) {
     var box = getMessageBox(from_user, to_user);
     box.find('textarea[name="message[msg_content]"]').val('');
 }
 
-function scrollEleToBottom(ele){
+function scrollEleToBottom(ele) {
     ele.scrollTop(ele[0].scrollHeight);
 }
