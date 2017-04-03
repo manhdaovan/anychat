@@ -8,7 +8,8 @@ class AppearanceChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    clear_cable_user_info(current_user.username)
+    Rails.cache.delete(current_user.username)
+    cookies.delete(:username)
     ActionCable.server.broadcast(ONLINE_CHANNEL_NAME, type: 'offline', username: current_user.username)
   end
 end
