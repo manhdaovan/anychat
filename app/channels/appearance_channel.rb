@@ -4,11 +4,11 @@ class AppearanceChannel < ApplicationCable::Channel
   def subscribed
     stream_from ONLINE_CHANNEL_NAME
     ActionCable.server.broadcast(ONLINE_CHANNEL_NAME, type: 'online', username: current_user.username)
-    write_user2cache(current_user.username, current_user.id)
+    store_user_info(current_user.username, false)
   end
 
   def unsubscribed
-    Rails.cache.delete(current_user.username)
+    clear_cable_user_info(current_user.username)
     ActionCable.server.broadcast(ONLINE_CHANNEL_NAME, type: 'offline', username: current_user.username)
   end
 end

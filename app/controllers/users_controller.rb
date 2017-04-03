@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include BeforeActionTrigger
-  before_action :require_login, :store_next_url
+  before_action :store_next_url, :require_login
 
   def index
     return unless request.post?
@@ -27,8 +27,14 @@ class UsersController < ApplicationController
   end
 
   def check_online
-    username = params.fetch(:username, '')
-    render json: { online: online?(username) }
+    username      = params.fetch(:username, '')
+    lock_send_msg = true
+    to_user       = fetch_user(username)
+    if to_user.present?
+      lock_send_msg = sent_first_offline_msg?(current_user, to_user) || !to_user.receive_offline_msg?
+    end
+    render json: {online:        online?(username),
+                  lock_send_msg: lock_send_msg}
   end
 
   def active_email

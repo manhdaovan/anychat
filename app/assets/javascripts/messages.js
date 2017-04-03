@@ -63,9 +63,13 @@ function buildMessageBox(from_username, to_username, extra_data) {
             box.find('input[type="submit"]').removeAttr('disabled');
         } else {
             box.find('.user-info .icon-online').removeClass('online');
-            messageInput.attr('disabled', 'disabled');
-            messageInput.attr('placeholder', 'This guy is offline now. You cannot send message to him.');
-            box.find('input[type="submit"]').attr('disabled', 'disabled');
+            if (extra_data.lock_send_msg) {
+                messageInput.attr('disabled', 'disabled');
+                messageInput.attr('placeholder', 'This guy is offline now. You cannot send message to him.');
+                box.find('input[type="submit"]').attr('disabled', 'disabled');
+            } else {
+                messageInput.attr('placeholder', 'This guy is offline now. You can send only one message to him within 24 hours.');
+            }
         }
         box.find('.user-info .username').text(to_username);
         box.show(500);
@@ -77,9 +81,13 @@ function buildMessageBox(from_username, to_username, extra_data) {
             boxHtml.find('.user-info .icon-online').addClass('online');
         } else {
             boxHtml.find('.user-info .icon-online').removeClass('online');
-            messageInput.attr('disabled', 'disabled');
-            messageInput.attr('placeholder', 'This guy is offline now. You cannot send message to him.');
-            boxHtml.find('input[type="submit"]').attr('disabled', 'disabled');
+            if (extra_data.lock_send_msg) {
+                messageInput.attr('disabled', 'disabled');
+                messageInput.attr('placeholder', 'This guy is offline now. You cannot send message to him.');
+                boxHtml.find('input[type="submit"]').attr('disabled', 'disabled');
+            } else {
+                messageInput.attr('placeholder', 'This guy is offline now. You can send only one message to him within 24 hours.');
+            }
         }
         boxHtml.find('form input[name="message[to_user]"]').val(to_username);
         boxHtml.find('.user-info .username').text(to_username);

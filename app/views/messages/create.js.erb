@@ -1,19 +1,19 @@
 <% if @msg.errors.present? %>
-  var msgErrs = '';
-  <% @msg.errors.full_messages.each do |msg| %>
-    msgErrs += '<%= msg %>\n';
-  <% end %>
-  toastr.error(msgErrs);
+var msgErrs = '';
+<% @msg.errors.full_messages.each do |msg| %>
+msgErrs += '<%= msg %>\n';
+<% end %>
+toastr.error(msgErrs);
 <% else %>
-<% if @receiver_online %>
+// Build message box with status
+buildMessageBox('<%= @msg.from_user%>',
+  '<%= @msg.to_user %>',
+  {online: <%= @receive_online%>, lock_send_msg: <%= @lock_send_msg %>});
 // Add message to box
 addMessageItemToBox('<%= @msg.from_user%>', '<%= @msg.to_user %>',
   buildMessageItem(<%= @msg.from_user == current_user.username%>,
     '<%= j(@msg.msg_content) %>'));
 // Clear input text
 clearMsgInput('<%= @msg.from_user%>', '<%= @msg.to_user %>');
-<% else %>
-toastr.error('This guy is offline now. You cannot send message to him.');
-<% end %>
 
 <% end %>

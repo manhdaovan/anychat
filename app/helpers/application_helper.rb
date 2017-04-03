@@ -3,12 +3,17 @@ module ApplicationHelper
     redirect_to session[:forward_url] || path
   end
 
-  def store_user_info(user)
+  def store_user_info(user, save_to_session = true)
     cache_key   = user.respond_to?(:username) ? user.username : user
     cache_value = user.respond_to?(:username) ? user.id : user
     write_user2cache(cache_key, cache_value)
-    session[:username]        = cache_key
+    session[:username]        = cache_key if save_to_session
     cookies.signed[:username] = cache_key
+  end
+
+  def clear_cable_user_info(username)
+    cookies.delete(:username)
+    Rails.cache.delete(username) if username
   end
 
   def write_user2cache(username, value)
@@ -17,7 +22,12 @@ module ApplicationHelper
 
   def online?(user)
     cache_key = user.respond_to?(:username) ? user.username : user
-    !Rails.cache.read(cache_key).blank?
+    Rails.cache.read(cache_key).present?
+  end
+
+  def offline?(user)
+    cache_key = user.respond_to?(:username) ? user.username : user
+    Rails.cache.read(cache_key).blank?
   end
 
   def current_user
@@ -70,8 +80,12 @@ module ApplicationHelper
     "sent-offline-#{from_user.username}-#{to_user.username}"
   end
 
-  def not_send_first_offline_msg(from_user, to_user)
-    Rails.cache.read(sent_offline_key(from_user, to_user)).blank?
+  def sent_first_offline_msg?(from_user, to_user)
+    Rails.cache.read(sent_offline_key(from_user, to_user)).present?
+  end
+
+  def clear_sent_first_msg(from_user, to_user)
+    Rails.cache.delete(sent_offline_key(from_user, to_user))
   end
 
   def mark_sent_first_offline_msg(from_user, to_user)
@@ -80,7 +94,7 @@ module ApplicationHelper
                       expires_in: 24.hours)
   end
 
-  def fetch_user_instance(username)
+  def fetch_user(username)
     User.find_by(username: username)
   end
 end

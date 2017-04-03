@@ -10,15 +10,21 @@ class MessagesController < ApplicationController
     return unless @msg.valid?
 
     # Mark user online again when user idles over 90 minutes then comes back
-    write_user2cache(current_user.username, current_user.id) unless online?(session[:username])
+    write_user2cache(current_user.username, current_user.id) unless online?(current_user)
 
-    @receiver_online = online?(@msg.to_user)
-    if @receiver_online
+    @lock_send_msg     = true # Default lock send msg
+    sent_first_off_msg = true # Default sent first msg regardless receiver existing or not
+    to_user            = fetch_user(@msg.to_user)
+    sent_first_off_msg = sent_first_offline_msg?(current_user, to_user) if to_user.present?
+    @receive_online    = online?(@msg.to_user)
+
+    if @receive_online
       ActionCable.server.broadcast(One2OneChannel.channel_key_name(@msg.to_user),
                                    type:    'message', from_user: current_user.username,
                                    to_user: @msg.to_user, msg: @msg.msg_content)
-    else
-      to_user = fetch_user_instance(@msg.to_user)
+      @lock_send_msg = false # Unlock send msg
+      clear_sent_first_msg(current_user, to_user) if sent_first_off_msg
+    elsif !sent_first_off_msg
       send_offline_msg(current_user, to_user, @msg.msg_content) if to_user.present?
     end
   end
@@ -27,7 +33,7 @@ class MessagesController < ApplicationController
 
   def send_offline_msg(from_user, to_user, msg)
     if under_mail_quota
-      if to_user.receive_offline_msg? && not_send_first_offline_msg(from_user, to_user)
+      if to_user.receive_offline_msg? && !sent_first_offline_msg?(from_user, to_user)
         MessageMailer.send_offline_message(from_user, to_user, msg).deliver_later
         update_number_emails
         mark_sent_first_offline_msg(from_user, to_user)
