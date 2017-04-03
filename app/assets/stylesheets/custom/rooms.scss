@@ -226,6 +226,7 @@
   .my-account {
     overflow: hidden;
   }
+
   #my-account-menu {
     li {
       a {
@@ -233,9 +234,25 @@
           text-decoration: underline;
         }
         height: 100%;
-        line-height: 45px;
+        line-height: 35px;
       }
-      height: 45px;
+      height: 35px;
+      line-height: 35px;
+    }
+    position: absolute;
+    top: 30px;
+    right: 187px;
+    @include screen-md {
+      top: 30px;
+      right: 140px;
+    }
+    @include screen-sm {
+      top: 30px;
+      right: 80px;
+    }
+    @include screen-xs {
+      top: 30px;
+      right: 4px;
     }
   }
 

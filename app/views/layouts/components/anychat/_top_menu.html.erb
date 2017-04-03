@@ -2,30 +2,31 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <div class="row" id="top-menu">
   <input type="hidden" name="current_username" value="<%= current_user.username %>">
-    <div class="col-8 logo text-left">
-      <div class="row">
-        <div class="col-12">You can support me by:</div>
-        <div class="col-6 col-sm-6 col-md-4 col-lg-2 text-left">
-          <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/manhdaovan/anychat" data-icon="octicon-star" data-style="mega" data-count-href="/manhdaovan/anychat/stargazers" data-count-api="/repos/manhdaovan/anychat#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star manhdaovan/anychat on GitHub">Star</a>
-        </div>
+
+  <div class="col-8 logo text-left">
+    <div class="row">
+      <div class="col-12">You can support me by:</div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-2 text-left">
+        <!-- Place this tag where you want the button to render. -->
+        <a class="github-button" href="https://github.com/manhdaovan/anychat" data-icon="octicon-star" data-style="mega" data-count-href="/manhdaovan/anychat/stargazers" data-count-api="/repos/manhdaovan/anychat#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star manhdaovan/anychat on GitHub">Star</a>
       </div>
     </div>
-    <div class="col-1 my-account">
-      <a id="a-notification-icon"><i class="fa fa-bell"></i></a>
-      <ul class="list-unstyled hide" id="ul-my-notification">
-        <li><span class="text-gray">You have no message.</span></li>
-      </ul>
-    </div>
-    <div class="col-3 my-account text-left">
-      <a onclick="showMyMenu()"><i class="fa fa-user">&nbsp;<%= current_user.username %></i></a>
-      <ul class="list-unstyled hide" id="my-account-menu">
-        <li><a data-toggle="modal" data-target="#current-user-profile-modal"><i class="fa fa-gears"></i>Setting</a></li>
-        <li><a href="<%= logout_home_index_path %>" data-method="delete">
-          <i class="fa fa-sign-out"></i>Sign out</a>
-        </li>
-      </ul>
-    </div>
+  </div>
+  <div class="col-1 my-account">
+    <a id="a-notification-icon"><i class="fa fa-bell"></i></a>
+    <ul class="list-unstyled hide" id="ul-my-notification">
+      <li><span class="text-gray">You have no message.</span></li>
+    </ul>
+  </div>
+  <div class="col-3 my-account text-left">
+    <a onclick="showMyMenu()"><i class="fa fa-user">&nbsp;<%= current_user.username %></i></a>
+  </div>
+  <ul class="list-unstyled hide" id="my-account-menu">
+    <li><a data-toggle="modal" data-target="#current-user-profile-modal"><i class="fa fa-gears"></i>Setting</a></li>
+    <li><a href="<%= logout_home_index_path %>" data-method="delete">
+      <i class="fa fa-sign-out"></i>Sign out</a>
+    </li>
+  </ul>
 </div>
 
 <!-- Current User Profile Modal -->
@@ -92,7 +93,7 @@
   function showMyMenu() {
     topMenu.toggleClass('hide');
   }
-  $('#a-notification-icon').click(function(){
+  $('#a-notification-icon').click(function () {
     $('#ul-my-notification').toggleClass('hide');
     $(this).find('i').removeClass('text-red');
   });
