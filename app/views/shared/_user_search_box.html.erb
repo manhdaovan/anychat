@@ -32,13 +32,11 @@
   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
   function openNav() {
     $("#mySidenav").addClass('nav-open').show(500);
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
   }
 
   /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
   function closeNav() {
     $("#mySidenav").removeClass('nav-open').hide(500);
-    document.body.style.backgroundColor = "white";
   }
   <% if selected_username %>
     $('.search-box input[name="q[username_cont]"]').val("<%= selected_username %>");
