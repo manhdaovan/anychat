@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def clear_cable_user_info(username)
     cookies.delete(:username)
-    Rails.cache.delete(username) if username
+    Rails.cache.delete(username)
   end
 
   def write_user2cache(username, value)
