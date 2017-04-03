@@ -2,7 +2,9 @@ $(document).on('click', '.list-user-item', function () {
     var $this = $(this);
     $this.removeClass('search').addClass('current');
     var msgBox = $('#any-messages-boxes');
-    $('#mySidenav').hide(500);
+    if ($('#search-icon').is(':visible')) {
+        $('#mySidenav').hide(500);
+    }
     msgBox.loading(true);
     $.ajax({
         url: '/users/online',
