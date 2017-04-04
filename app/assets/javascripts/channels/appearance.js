@@ -27,7 +27,10 @@ App.cable.subscriptions.create("AppearanceChannel", {
             } else {
                 $('#user-' + data['username']).removeClass('text-info');
             }
-            buildMessageBox(getCurrentUser(), data['username'], extraData);
+            var msgBox = getMessageBox(getCurrentUser(), data['username']);
+            if (msgBox.length > 0 && msgBox.is(':visible')) {
+                buildMessageBox(getCurrentUser(), data['username'], extraData);
+            }
         }
     }
 });
