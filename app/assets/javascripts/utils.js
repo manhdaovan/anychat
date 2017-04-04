@@ -19,6 +19,7 @@ $.fn.loading = function(show) {
     }
 };
 
+var lastSubmit = Date.now();
 $(document).on('click', 'input[type="submit"]',function(e){
     e.preventDefault();
     e.stopPropagation();
@@ -31,7 +32,9 @@ $(document).on('click', 'input[type="submit"]',function(e){
             formValid = false;
         }
     });
-    if(formValid){
+    // Prevent submit continuously 3seconds
+    if(formValid && (lastSubmit <= Date.now() - 3000)){
+        lastSubmit = Date.now();
         form.submit();
     }
 });

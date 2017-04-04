@@ -3,7 +3,11 @@ toastr.warning('Cannot found user: ' + '<%= params.fetch(:q, {}).fetch('username
 <% else %>
 var listUsers = $('#anychat-list-users');
 listUsers.find('li.search').remove();
+
 <% @users.each do |u| %>
-listUsers.append('<%= j(render 'user_item', user: u)%>');
+if ($('#user-' + '<%= u.username %>').length === 0) {
+  listUsers.append('<%= j(render 'user_item', user: u)%>');
+}
 <% end %>
+
 <% end %>
