@@ -48,6 +48,10 @@ class User < ApplicationRecord
     )
   end
 
+  def qr_code_existing?
+    File.exist?("#{Rails.root}/public/system/#{id}/#{username}.png")
+  end
+
   def qr_code_url
     file_path = "#{Rails.root}/public/system/#{id}/#{username}.png"
     return nil unless File.exist?(file_path)
