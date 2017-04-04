@@ -3,7 +3,7 @@ $(document).on('click', '.list-user-item', function () {
     $this.removeClass('search').addClass('current');
     var msgBox = $('#any-messages-boxes');
     if ($('#search-icon').is(':visible')) {
-        $('#mySidenav').hide(500);
+        $('#mySidenav').toggleClass('nav-open hide');
     }
     msgBox.loading(true);
     $.ajax({
