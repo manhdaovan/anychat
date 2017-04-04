@@ -107,7 +107,7 @@
     border: 1px dotted gray;
   }
 
-  .list-users, #any-messages-boxes {
+  .list-users {
     margin-top: 30px;
   }
 
@@ -138,7 +138,7 @@
     &.nav-open {
       width: 20.3333%;
       @include screen-xs {
-        width: 85%;
+        width: 100%;
       }
     }
     //    position: fixed; /* Stay in place */
@@ -147,7 +147,7 @@
     left: 0;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    padding-top: 20px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   }
 
@@ -194,9 +194,6 @@
    change the style of the sidenav
    (less padding and a smaller font size) */
   @include screen-xs {
-    .sidenav {
-      padding-top: 45px;
-    }
     .sidenav a {
       font-size: 18px;
     }
@@ -257,11 +254,11 @@
     z-index: 999;
   }
 
-  #ul-my-notification{
+  #ul-my-notification {
     position: fixed;
     top: 30px;
     right: 29%;
-    @include screen-md{
+    @include screen-md {
       right: 25%;
     }
     @include screen-xs {
@@ -284,7 +281,7 @@
       }
       margin-left: 5px;
       margin-right: 5px;
-      &.li-no-message{
+      &.li-no-message {
         line-height: 45px;
       }
     }

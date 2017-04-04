@@ -58,6 +58,9 @@
 
 <body id="<%= params[:controller] %>">
 <div class="container">
+  <% if current_user %>
+    <input type="hidden" name="current_username" value="<%= current_user.username %>">
+  <% end %>
   <!-- nav bar if logged in -->
   <% if current_user && params[:controller] != 'home' %>
     <%= render 'layouts/components/anychat/top_menu' %>

@@ -1,24 +1,24 @@
 <div class="row">
-  <div class="col-md-12 search-box">
+  <div class="col-12 search-box">
     <%= search_form_for q, url: users_path, remote: true,
-                        html: {method: :post} do |f| %>
+                        html:   {method: :post} do |f| %>
       <div class="row">
-        <div class="col-8">
+        <div class="col-md-8 col-8">
           <%= f.search_field :username_cont,
-                                              class:       'form-control required',
-                                              placeholder: 'Search by username',
-                                              data: {name: 'Search by username',
-                                                     'required-msg' => 'Please input some text to search!'} %>
+                             class:       'form-control required',
+                             placeholder: 'Search by username',
+                             data:        {name:          'Search by username',
+                                           'required-msg' => 'Please input some text to search!'} %>
           <%= f.search_field :username_not_eq,
                              value: current_user.username,
-                             class:       'hide'%>
+                             class: 'hide' %>
 
         </div>
-        <div class="col-2"><%= f.submit 'search', class: 'btn btn-success btn-submit' %></div>
+        <div class="col-4"><%= f.submit 'Search', class: 'btn btn-success btn-submit' %></div>
       </div>
     <% end %>
   </div>
-  <div class="col-md-12 list-users">
+  <div class="col-12 list-users">
     <ul id="anychat-list-users">
     </ul>
   </div>
@@ -26,20 +26,11 @@
 
 <script type="text/javascript">
   $('#search-icon').click(function () {
-    openNav();
+    $("#mySidenav").toggleClass('nav-open hide');
   });
 
-  /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
-  function openNav() {
-    $("#mySidenav").addClass('nav-open').show(500);
-  }
-
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-  function closeNav() {
-    $("#mySidenav").removeClass('nav-open').hide(500);
-  }
   <% if selected_username %>
-    $('.search-box input[name="q[username_cont]"]').val("<%= selected_username %>");
-    $('.search-box input[type="submit"]').click();
+  $('.search-box input[name="q[username_cont]"]').val("<%= selected_username %>");
+  $('.search-box input[type="submit"]').click();
   <% end %>
 </script>

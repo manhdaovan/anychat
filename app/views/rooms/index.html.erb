@@ -1,5 +1,5 @@
 <% content_for :title, "Welcome, #{current_user.username}" %>
-<div class="row">
+<div class="row container">
   <div class="col-6">
     <div id="search-icon">
       <a class="text-info">
@@ -9,9 +9,6 @@
   </div>
   <div class="col-6"></div>
   <div class="col-md-4 left-part-list-users sidenav nav-open" id="mySidenav">
-    <div class="row">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    </div>
     <%= render 'shared/user_search_box', q: @q, selected_username: @selected_username %>
   </div>
   <div class="col-md-8" id="any-messages-boxes">
