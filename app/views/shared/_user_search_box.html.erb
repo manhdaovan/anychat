@@ -31,6 +31,6 @@
 
   <% if selected_username %>
   $('.search-box input[name="q[username_cont]"]').val("<%= selected_username %>");
-  setTimeout(function(){$('.search-box input[type="submit"]').click();}, 3000);
+  $('.search-box input[type="submit"]').trigger('autosearch');
   <% end %>
 </script>
