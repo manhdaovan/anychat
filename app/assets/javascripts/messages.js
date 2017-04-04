@@ -13,6 +13,8 @@ $(document).on('click', '.list-user-item', function () {
         success: function (data) {
             if (data.online) {
                 $('#user-' + $this.data('username')).addClass('text-info');
+            }else{
+                $('#user-' + $this.data('username')).removeClass('text-info');
             }
             buildMessageBox($('input[name="current_username"]').val(), $this.data('username'), data);
         },
