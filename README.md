@@ -2,7 +2,7 @@
 
 You can use service at [https://anychat.4me.tips](https://anychat.4me.tips) or take a server, install it yourself then share to your partners.
 
-* Basic Authentication username/password: guest/anychat (Will be removed in major version)
+* ~~Basic Authentication username/password: guest/anychat~~
 
 
 ### Background
