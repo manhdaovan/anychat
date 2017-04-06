@@ -1,6 +1,6 @@
 ### Anychat - Your private communication
 
-You can use service at [https://anychat.4me.tips](https://anychat.4me.tips) or take and server, install it yourself then share to your partners.
+You can use service at [https://anychat.4me.tips](https://anychat.4me.tips) or take a server, install it yourself then share to your partners.
 
 * Basic Authentication username/password: guest/anychat (Will be removed in major version)
 
@@ -31,12 +31,33 @@ So you need a chatting method that:
 
 ### Install and deploy your self
 
-* Run `$cd /path/to/project/ && cp .env.example .env` in your local machine.
-* Fill all required information in .env file
+#### Preparing
+
+* Install redis, mysql, nginx on your host.
+* Start redis, mysql.
+* Create your database.
+* Run `$cd /path/to/project/ && cp .env.example .env`.
+* Fill all required information in .env file.
+
+#### Install in localhost (development mode)
+
+* Do all preparing steps
 * Run `$bundle install` in your local machine.
+* Run `$bundle exec rails s` to start your local server.
+
+#### Deploy to remote host
+
+* Do all preparing steps
 * Define your server, git repo in `/path/to/project/config/deploy/staging.rb`
-* Run `$cap staging deploy:init` from your local machine for first deployment
-* Run `$cap staging deploy` from your local machine for next deployments
+* Run `$cap staging puma:nginx_config` to get new nginx config file.
+* Run `$cap staging deploy:init` from your local machine for first deployment.
+* Run `$cap staging deploy` from your local machine for next deployments.
+
+### TODO
+
+* Improve UI, UX.
+* Change to SPA.
+* Prevent clear data when reload page.
 
 ### Development
 
