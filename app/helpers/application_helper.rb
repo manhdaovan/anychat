@@ -39,6 +39,7 @@ module ApplicationHelper
   def logout_user
     current_user.update(last_logged_in: Time.zone.now.to_s) if current_user
     username = session.delete(:username)
+    session.delete(:forward_url)
     cookies.delete(:username)
     Rails.cache.delete(username) if username
   end
